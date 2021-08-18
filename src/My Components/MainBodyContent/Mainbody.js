@@ -22,9 +22,10 @@ function Mainbody() {
     <div className="Main-Div"> 
     
  <div>
-
- <h1 style={{fontSize:'100px',textAlign:'center',color: '#ffffff', fontweight: '900', lineheight: '64px', margin: '0 0 0', padding: '20px 30px', textalign: 'center', texttransform: 'uppercase',background:'#281931'}}>Our Services</h1>        
+<h1 style={{fontSize:'100px',textAlign:'center',color: '#ffffff', fontweight: '900', lineheight: '64px', margin: '0 0 0', padding: '20px 30px', textalign: 'center', texttransform: 'uppercase',background:'#281931'}}>Our Services</h1>        
+<container fluid>
 <CardGroup>
+
 <Row>
 <Col xl={3} sm={6}>
  <Card style= {{height:'500px', marginRight:'5px'}}>
@@ -45,7 +46,7 @@ function Mainbody() {
     </Col>
 
     <Col xl={3} sm={6}>
-    <Card style= {{height:'500px', marginRight:'5px'}}>
+    <Card style= {{height:'500px', marginRight:'5px' }}>
    
     <Card.Img variant="top"  className="imgcard" src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" />
     <Card.Body className="card-body">
@@ -55,7 +56,7 @@ function Mainbody() {
     </Col>
 
     <Col xl={3} sm={6}>
-  <Card style= {{height:'500px', marginRight:'5px'}}>
+  <Card style= {{height:'500px', marginRight:'5px' }}>
     <Card.Img variant="top" className="imgcard" src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
       <Card.Title><h1>Legal Aid</h1></Card.Title>
@@ -63,8 +64,9 @@ function Mainbody() {
    </Card>
    </Col>
    </Row>
+   
 </CardGroup>
-
+</container>
 
 </div>
 
@@ -72,10 +74,10 @@ function Mainbody() {
 <div style={{marginTop:'60px', background:'#e3dff7'}} >
  <Container fluid className="second-content">
 <Row >
-    <Col xl={6} className="text-column">
+    <Col xl={6} sm={true} className="text-column">
     <img src={"Images/Business partner.png" }alt="imgb"/>
     </Col>
-    <Col xl={6} className= "img-column">
+    <Col xl={6} sm={true} className= "img-column">
     <img src={"Images/businessimg.jpg" }alt="imgb"/>
 
     </Col>
