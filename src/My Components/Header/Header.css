@@ -3,8 +3,8 @@
     opacity: 0.8;
     font-size: medium;
     font-family: 'Bree Serif', serif;
-    color: hsl(0, 0%, 100%);
-    font-size: 30px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
     width: 100%;
     margin: 0%;
 }

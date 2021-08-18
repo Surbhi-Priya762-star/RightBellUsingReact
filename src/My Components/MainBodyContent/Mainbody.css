@@ -3,7 +3,7 @@
         margin:0;
         padding:0;
         background-color: rgba(245, 244, 250, 0.938);
-        position: relative;
+        
         
 }
 .sec-Div{
@@ -17,7 +17,8 @@
     background-color:#281931;
     opacity: 0.8;
     color:#ffffff;
-    height: 30px;
+    height: 10px;
+    width: 100%;
 }
 
 .imgcard{
@@ -27,7 +28,11 @@
 .text-column{
     
     text-align: center;
+    padding: 0% !important;
     
+}
+.img-column{
+  padding: 0% !important;
 }
 
 .carousel-root {

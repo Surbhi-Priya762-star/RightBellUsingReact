@@ -31,7 +31,7 @@ function Mainbody() {
  <Card style= {{height:'500px', marginRight:'5px'}}>
     <Card.Img variant="top"className="imgcard" src="https://images.unsplash.com/photo-1476231790875-016a80c274f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
-      <Card.Title><h1 >JOBS</h1></Card.Title>
+      <Card.Title><h2 >JOBS</h2></Card.Title>
       </Card.Body>
      </Card>
      </Col>
@@ -40,7 +40,7 @@ function Mainbody() {
      <Card style= {{height:'500px', marginRight:'5px'}}>
     <Card.Img variant="top" className="imgcard" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
-      <Card.Title><h1>Training</h1></Card.Title>
+      <Card.Title><h2>Training</h2></Card.Title>
     </Card.Body>
     </Card>
     </Col>
@@ -50,7 +50,7 @@ function Mainbody() {
    
     <Card.Img variant="top"  className="imgcard" src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" />
     <Card.Body className="card-body">
-      <Card.Title><h1>Student Management System</h1></Card.Title>
+      <Card.Title><h2>Student Management System</h2></Card.Title>
      </Card.Body>
     </Card>
     </Col>
@@ -59,7 +59,7 @@ function Mainbody() {
   <Card style= {{height:'500px', marginRight:'5px' }}>
     <Card.Img variant="top" className="imgcard" src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
-      <Card.Title><h1>Legal Aid</h1></Card.Title>
+      <Card.Title><h2>Legal Aid</h2></Card.Title>
       </Card.Body>
    </Card>
    </Col>
@@ -72,7 +72,7 @@ function Mainbody() {
 
 
 <div style={{marginTop:'60px', background:'#e3dff7'}} >
- <Container fluid className="second-content">
+ <Container className="second-content">
 <Row >
     <Col xl={6} sm={true} className="text-column">
     <img src={"Images/Business partner.png" }alt="imgb"/>
