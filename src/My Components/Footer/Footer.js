@@ -10,7 +10,7 @@ import './Footer.css'
 
 function Footer() {
     return (
-        <div style={{marginTop:'20px'}}>
+        <div style={{marginTop:'800px'}}>
            <footer className="custom text-light">
 <container fluid>
 <Row>

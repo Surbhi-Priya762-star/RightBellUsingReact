@@ -74,15 +74,16 @@ function Mainbody() {
 <div style={{marginTop:'60px', background:'#e3dff7'}} >
  <Container className="second-content">
 <Row >
-    <Col xl={6} sm={true} className="text-column">
+    <Col sm={true}  className="text-column">
     <img src={"Images/Business partner.png" }alt="imgb"/>
     </Col>
-    <Col xl={6} sm={true} className= "img-column">
+    <Col sm={true} className= "img-column">
     <img src={"Images/businessimg.jpg" }alt="imgb"/>
 
     </Col>
     </Row>
-  </Container>
+  </Container> 
+  
 
 </div>
 

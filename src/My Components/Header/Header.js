@@ -10,7 +10,7 @@ import {NavDropdown} from 'react-bootstrap'
 
 function Header() {
  return (
-<div>
+<header>
   <div style={{width:'100%'}}>
     <container fluid>
  
@@ -63,7 +63,7 @@ function Header() {
     </Nav>
   </Navbar.Collapse>
    </Navbar>
-        </div>
+   </header>
     )
 }
 

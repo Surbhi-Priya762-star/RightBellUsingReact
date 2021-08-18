@@ -1,10 +1,15 @@
+header{
+   
+   
+    width: 100%;
+}
 .custom{
     background: #281931;
     opacity: 0.8;
     font-size: medium;
     font-family: 'Bree Serif', serif;
     color: rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 100px;
     width: 100%;
     margin: 0%;
 }
