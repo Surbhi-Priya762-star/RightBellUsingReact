@@ -1,0 +1,18 @@
+footer{
+    margin-top: 500px;
+    padding: 1rem;
+    background-color:#281931;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+   
+  }
+  .custom{
+    background: #281931;
+    opacity: 0.8;
+    font-size: medium;
+    font-family: 'Bree Serif', serif;
+    color: hsl(0, 0%, 100%);
+    font-size: 30px;
+}

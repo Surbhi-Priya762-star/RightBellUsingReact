@@ -1,0 +1,24 @@
+.custom{
+    background: #281931;
+    opacity: 0.8;
+    font-size: medium;
+    font-family: 'Bree Serif', serif;
+    color: hsl(0, 0%, 100%);
+    font-size: 30px;
+    width: 100%;
+    margin: 0%;
+}
+.Search-box{
+    text-align: end;
+    
+    
+}
+.search{
+    width: 400px;
+    border-radius: 25px !important;
+    padding: 30px;
+}
+.form-control{
+    border-radius: 25px !important;
+    padding: 30px;
+}
