@@ -8,8 +8,8 @@ header{
     opacity: 0.8;
     font-size: medium;
     font-family: 'Bree Serif', serif;
-    color: rgb(255, 255, 255);
-    font-size: 100px;
+    color: rgb(255, 255, 255) !important;
+    font-size: 30px !important;
     width: 100%;
     margin: 0%;
 }
@@ -19,11 +19,11 @@ header{
     
 }
 .search{
-    width: 400px;
+    width: 600px;
     border-radius: 25px !important;
-    padding: 30px;
+    padding: 30px !important;
 }
 .form-control{
     border-radius: 25px !important;
-    padding: 30px;
+    padding: 30px !important;
 }

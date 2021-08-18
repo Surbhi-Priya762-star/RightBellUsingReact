@@ -20,15 +20,15 @@ function Mainbody() {
   return (
   <Fragment>     
     <div className="Main-Div"> 
-    
+    <container >  
  <div>
 <h1 style={{fontSize:'100px',textAlign:'center',color: '#ffffff', fontweight: '900', lineheight: '64px', margin: '0 0 0', padding: '20px 30px', textalign: 'center', texttransform: 'uppercase',background:'#281931'}}>Our Services</h1>        
-<container fluid>
+
 <CardGroup>
 
 <Row>
 <Col xl={3} sm={6}>
- <Card style= {{height:'500px', marginRight:'5px'}}>
+ <Card style= {{height:'500px', marginRight:'5px', width:'100%'}}>
     <Card.Img variant="top"className="imgcard" src="https://images.unsplash.com/photo-1476231790875-016a80c274f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
       <Card.Title><h2 >JOBS</h2></Card.Title>
@@ -37,7 +37,7 @@ function Mainbody() {
      </Col>
 
      <Col xl={3} sm={6}>
-     <Card style= {{height:'500px', marginRight:'5px'}}>
+     <Card style= {{height:'500px', marginRight:'5px', width:'100%'}}>
     <Card.Img variant="top" className="imgcard" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
       <Card.Title><h2>Training</h2></Card.Title>
@@ -46,7 +46,7 @@ function Mainbody() {
     </Col>
 
     <Col xl={3} sm={6}>
-    <Card style= {{height:'500px', marginRight:'5px' }}>
+    <Card style= {{height:'500px', marginRight:'5px', width:'100%' }}>
    
     <Card.Img variant="top"  className="imgcard" src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" />
     <Card.Body className="card-body">
@@ -56,7 +56,7 @@ function Mainbody() {
     </Col>
 
     <Col xl={3} sm={6}>
-  <Card style= {{height:'500px', marginRight:'5px' }}>
+  <Card style= {{height:'500px', marginRight:'5px', width:'100%' }}>
     <Card.Img variant="top" className="imgcard" src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
     <Card.Body className="card-body">
       <Card.Title><h2>Legal Aid</h2></Card.Title>
@@ -66,22 +66,17 @@ function Mainbody() {
    </Row>
    
 </CardGroup>
-</container>
 
 </div>
-
-
+</container>
 <div style={{marginTop:'60px', background:'#e3dff7'}} >
- <Container className="second-content">
-<Row >
-    <Col sm={true}  className="text-column">
-    <img src={"Images/Business partner.png" }alt="imgb"/>
-    </Col>
-    <Col sm={true} className= "img-column">
-    <img src={"Images/businessimg.jpg" }alt="imgb"/>
+ <Container fluid className="second-content">
 
-    </Col>
-    </Row>
+    <img src={"Images/Business partner.png" }alt="imgb" style={{height:'600px',width:'50%'}}/>
+    
+    <img src={"Images/businessimg.jpg" }alt="imgb" style={{height:'600px',width:'50%'}}/>
+
+    
   </Container> 
   
 
@@ -89,7 +84,7 @@ function Mainbody() {
 
 
 <div style={{marginTop:'40px'}}>
-<h1 style={{fontSize:'100px',textAlign:'center',color: '#ffffff', fontweight: '900', lineheight: '64px', margin: '0 0 0', padding: '20px 30px', textalign: 'center', texttransform: 'uppercase',background:'#281931'}}>Our Association</h1>
+<h1 style={{fontSize:'100px',textAlign:'center',color: '#ffffff', fontweight: '800', lineheight: '64px', margin: '0 0 0', padding: '20px 30px', textalign: 'center', texttransform: 'uppercase',background:'#281931'}}>Our Association</h1>
 <div className="sec-Div">
 <Marquee duration={10000} background="#fafafa" height="250px">
        
