@@ -48,11 +48,12 @@ function Header() {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
      <Navbar.Collapse id="responsive-navbar-nav">
        <Nav className="me-auto">
-      <Nav.Link href="#features" style={{marginLeft:'20px',marginRight:'20px'}}>Home</Nav.Link>
-      <Nav.Link href="#pricing"style={{marginRight:'20px'}}>About Us</Nav.Link>
-      <Nav.Link href="#pricing"style={{marginRight:'20px'}}>Career</Nav.Link>
-      <Nav.Link href="#pricing" style={{marginRight:'20px'}}>Gallery</Nav.Link>
-      <Nav.Link href="#pricing" style={{marginRight:'20px'}}>Contact Us</Nav.Link>
+       <LinkContainer to="/">
+      <Nav.Link href="/" style={{marginLeft:'20px',marginRight:'20px'}}>Home</Nav.Link></LinkContainer>
+      <Nav.Link href="About"style={{marginRight:'20px'}}>About Us</Nav.Link>
+      <Nav.Link href="#Career"style={{marginRight:'20px'}}>Career</Nav.Link>
+      <Nav.Link href="#Gallery" style={{marginRight:'20px'}}>Gallery</Nav.Link>
+      <Nav.Link href="#ContactUs" style={{marginRight:'20px'}}>Contact Us</Nav.Link>
        </Nav>
     <Nav>
     <NavDropdown title="SignUp" id="collasible-nav-dropdown" style={{marginRight:'20px'}}>

@@ -142,7 +142,9 @@ function Mainbody() {
       </Carousel>
     </div>
   </div>
+
 </div>
+
 </Fragment>
     )
 }
