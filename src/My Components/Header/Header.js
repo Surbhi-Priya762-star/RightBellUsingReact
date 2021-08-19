@@ -4,8 +4,9 @@ import { Navbar } from 'react-bootstrap';
 import {Nav} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
-
-import {NavDropdown} from 'react-bootstrap'
+import SignupServiceUser from '../SignUp/ServiceUser';
+import {NavDropdown} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 function Header() {
@@ -16,7 +17,7 @@ function Header() {
  
      <Navbar className="custom">
      <Navbar sticky="top" />
-     
+     <LinkContainer to="/">
      <Navbar.Brand href="#home">
       <img
         src={"/Images/logo.PNG"}
@@ -26,6 +27,7 @@ function Header() {
         alt="Right Bell logo"
         />
        </Navbar.Brand>
+       </LinkContainer>
      <Form className="search ml-auto ">
       <FormControl
         type="search"
@@ -54,8 +56,10 @@ function Header() {
        </Nav>
     <Nav>
     <NavDropdown title="SignUp" id="collasible-nav-dropdown" style={{marginRight:'20px'}}>
-        <NavDropdown.Item href="#action/3.1">SignUp as a ServiceProvider</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">SignUp as a ServiceUser</NavDropdown.Item>
+      <LinkContainer to="/ServiceUser">
+        <NavDropdown.Item href="/ServiceUser">ServiceUser</NavDropdown.Item></LinkContainer>
+        <LinkContainer to="/ServiceProvider">
+        <NavDropdown.Item href="/ServiceProvider">ServiProvider</NavDropdown.Item></LinkContainer>
        </NavDropdown>
       <Nav.Link eventKey={2} href="#memes" style={{marginRight:'20px'}}>
         SignIn
@@ -67,7 +71,8 @@ function Header() {
     )
 }
 
+<SignupServiceUser/>
 
+export default Header;
 
-export default Header
 
