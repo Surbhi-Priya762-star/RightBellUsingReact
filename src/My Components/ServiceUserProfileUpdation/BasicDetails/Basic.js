@@ -22,6 +22,8 @@ import BackupIcon from '@material-ui/icons/Backup';
 import { Button } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
 
+import Basic from '../Basic';
+
 
 const drawerWidth = 240;
 
@@ -87,6 +89,7 @@ export default function PermanentDrawerLeft() {
       >
         
         <div style={{marginTop:'0', paddingRight:'20px', backgroundColor:'#231c2b'}} />
+        <LinkContainer to="/">
         <img
         src={"/Images/logo.png"}
         width="250"
@@ -94,6 +97,7 @@ export default function PermanentDrawerLeft() {
         style={{paddingBottom:'40px'}}
         alt="Right Bell logo"
         />
+        </LinkContainer>
         <Divider />
        
       
@@ -192,11 +196,10 @@ export default function PermanentDrawerLeft() {
      
      
       </Drawer>
-    
       <main className={classes.content}>
         <div className={classes.toolbar} />
       
-    
+      <Basic/>
       </main>
     </div>
   );

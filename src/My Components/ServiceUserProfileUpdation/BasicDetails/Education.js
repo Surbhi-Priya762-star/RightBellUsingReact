@@ -7,12 +7,20 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import WorkIcon from '@material-ui/icons/Work';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+import BackupIcon from '@material-ui/icons/Backup';
 import Education from '../Education';
 import { Button } from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 const drawerWidth = 240;
@@ -24,11 +32,14 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    height:'100px',
+    height:'150px',
+    backgroundColor:'#231c2b',
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+  
+    
     
   },
   drawerPaper: {
@@ -39,13 +50,13 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(2),
-    marginTop:'10px',
+    padding: theme.spacing(3),
   },
 }));
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
+  
 
   return (
     <div className={classes.root}>
@@ -53,10 +64,18 @@ export default function PermanentDrawerLeft() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            Permanent drawer
+            <div style={{marginTop:'40px'}}>
+           <h1>Surbhi priya</h1>  
+            <p><h4>#ID-123456789</h4>   <CircularProgress variant="determinate" value={75} />75%</p>
+            <span><AccountCircle/></span>
+          
+           
+     
+            </div>
           </Typography>
         </Toolbar>
       </AppBar>
+     
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -64,31 +83,35 @@ export default function PermanentDrawerLeft() {
           paper: classes.drawerPaper,
         }}
         anchor="left"
+        
       >
-       <div style={{marginTop:'10px', paddingRight:'20px'}} />
+        
+        <div style={{marginTop:'0', paddingRight:'20px', backgroundColor:'#231c2b'}} />
+        <LinkContainer to="/">
         <img
         src={"/Images/logo.png"}
-        width="210"
-        height="180"
+        width="250"
+        height="190"
         style={{paddingBottom:'40px'}}
         alt="Right Bell logo"
         />
+        </LinkContainer>
         <Divider />
        
-        <Divider />
-        <LinkContainer to="/Employment">
+      
+        <LinkContainer to="/Basic">
         <List>
         <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>BasicDetails</h4> </Button>
+           <h5>BasicDetails <ExitToAppIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/Dashboard">
         <List>
         <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4><DashboardIcon/> Dashboard </h4>
+           <h5>Dashboard <DashboardIcon/></h5>
            
             </Button>
        </List>
@@ -98,7 +121,7 @@ export default function PermanentDrawerLeft() {
         <List>
        <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>Education</h4> </Button>
+           <h5>Education<MenuBookIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
@@ -106,55 +129,56 @@ export default function PermanentDrawerLeft() {
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>Employment</h4> </Button>
+           <h5>Employment
+             <span style={{margin:'auto'}}><WorkIcon/></span></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/KeySkills">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>KeySkills</h4> </Button>
+           <h5>KeySkills<VpnKeyIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/Project">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>Project</h4> </Button>
+           <h5>Project<FileCopyIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/Accomplishment">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>Accomplishment</h4> </Button>
+           <h5>Accomplishment<CardGiftcardIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/DesiredRole">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>DesiredRole</h4> </Button>
+           <h5>DesiredRole<WorkOutlineIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/Assessment">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
-           <h4>Assessment</h4> </Button>
+           <h5>Assessment<BackupIcon/></h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="/Employment">
+               <LinkContainer to="/CV">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
-        variant="outline-dark">
-           <h4>Generate CV</h4> </Button>
+        >
+           <h5>Generate CV</h5> </Button>
        </List>
            </LinkContainer>
                <Divider/>

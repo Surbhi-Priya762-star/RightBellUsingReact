@@ -12,11 +12,14 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MenuBar from './My Components/ServiceUserProfileUpdation/BasicDetails/MenuBar'
 import Education from './My Components/ServiceUserProfileUpdation/BasicDetails/Education';
-import Employment from './My Components/ServiceUserProfileUpdation/Employment';
-import Project from './My Components/ServiceUserProfileUpdation/Project';
-import Accomplishment from './My Components/ServiceUserProfileUpdation/Accomplishment';
-import DesiredRole from './My Components/ServiceUserProfileUpdation/DesiredRole';
-import Assessment from './My Components/ServiceUserProfileUpdation/Assessment';
+import Employment from './My Components/ServiceUserProfileUpdation/BasicDetails/Employment';
+import Accomplishment from './My Components/ServiceUserProfileUpdation/BasicDetails/Accomplishment';
+import Assessment from './My Components/ServiceUserProfileUpdation/BasicDetails/Assessment';
+import Project from './My Components/ServiceUserProfileUpdation/BasicDetails/Project';
+import DesiredRole from './My Components/ServiceUserProfileUpdation/BasicDetails/DesiredRole';
+import Basic from './My Components/ServiceUserProfileUpdation/BasicDetails/Basic';
+import KeySkills from './My Components/ServiceUserProfileUpdation/BasicDetails/KeySkills';
+
 
 
 
@@ -30,13 +33,14 @@ ReactDOM.render(
         <Route path="/ServiceUser" component={ServiceUser} />
         <Route path="/ServiceProvider" component={ServiceProvider} />
         <Route path="/MenuBar" component={MenuBar}/>
-       
-        <Route path="/Education" component={Education}/>
+       <Route path="/Education" component={Education}/>
         <Route path="/Employment" component={Employment}/>
-        <Route path="/Project" component={Project}/>
+       <Route path="/DesiredRole" component={DesiredRole}/>
         <Route path="/Accomplishment" component={Accomplishment}/>
-        <Route path="/DesiredRole" component={DesiredRole}/>
+        <Route path="/Project" component={Project}/>
         <Route path="/Assessment" component={Assessment}/>
+        <Route path="/Basic" component={Basic}/>
+        <Route path="/KeySkills" component={KeySkills}/>
         <Route path="/Login" component={Login}/>
       
       </Switch>

@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -35,8 +34,7 @@ function Project() {
    
     return (
         <div>
-            <Header/>
-            <h1 className="heading">Project Details:</h1>
+            
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -46,6 +44,9 @@ function Project() {
           <Paper className={classes.paper}>
           <form className={classes.form} noValidate>
           <Grid container spacing={4}>
+          <Grid item xs={12} >
+            <h1 className="heading" style={{margin:'auto'}}>Project:</h1>
+            </Grid>
             <Grid item xs={12} >
               <TextField
                 autoComplete="Project Title"
@@ -152,7 +153,7 @@ function Project() {
       </Grid>
     </div>
     </Container>
-          <Footer/>  
+           
         </div>
     )
 }

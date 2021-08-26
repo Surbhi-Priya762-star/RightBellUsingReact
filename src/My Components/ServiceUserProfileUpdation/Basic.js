@@ -52,25 +52,58 @@ function Basic() {
           
             <Grid container spacing={4}>
             <Grid item xs={12} >
-            <h1 className="heading" style={{margin:'auto'}}>Please Mention Your Skills separated by comma:</h1>
+            <h1 className="heading" style={{margin:'auto'}}>Basic Details:</h1>
             </Grid>
-            <Grid item xs={12} >
+            <Grid item xs={10} >
               <TextField
                 autoComplete="Name"
-                name="Skills"
+                name="Name"
                 variant="outlined"
                 required
                 fullWidth
-                id="Skills"
-                label="Skills"
+                id="Name"
+                label="Name"
                 className="Text-field"
                 
               />
               
             </Grid>
-          
+            <Grid item xs={10}  >
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="Email"
+                label="Email"
+                name="Email"
+                autoComplete="Email"
+                type="Email"
+               />
+               </Grid>
+               <Grid item xs={2}  >
+               <Button variant="outlined" color="secondary" size="large">
+                               Verify
+                             </Button>
+               </Grid>
+
            
-           
+            <Grid item xs={10} >
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="Phone NUmber"
+                label="Phone NUmber"
+                name="Phone NUmber"
+                autoComplete="Phone NUmber"
+                type="PhoneNumber"
+              />
+            </Grid>
+            <Grid item xs={2}  >
+               <Button variant="outlined" color="secondary" size="large">
+                               Verify
+                             </Button>
+               </Grid>
             
            
              

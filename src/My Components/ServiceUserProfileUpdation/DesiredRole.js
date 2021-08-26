@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -72,17 +71,38 @@ const MenuProps = {
 };
 
 const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
+  'Web Developer',
+  'Teacher',
+  'Business Analyst',
+  'Software Engineer',
+  'Full-Stack Developer',
+  'Business Development Executive',
+  'Data Scientist',
+  'Web Designer',
+  'UI-UX Designer',
+  'Project Manager',
 ];
+
+const locations = [
+  'Delhi',
+  'Haryana',
+  'Kolkata',
+  'Mumbai',
+  'Pune',
+  'Bangalore',
+  'Gujrat',
+  'Patna',
+  'Hyderabad',
+  'Chennai',
+];
+function getsStyles(location, personLocation, theme) {
+  return {
+    fontWeight:
+      personLocation.indexOf(location) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 function getStyles(name, personName, theme) {
   return {
@@ -100,7 +120,20 @@ function DesiredRole() {
     const [age, setAge] = React.useState('');
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
+    const [personLocation, setPersonLocation] = React.useState([]);
     const [role, setRole] = React.useState('');
+    const[employ, setEmploy] = React.useState('');
+    const[shift, setShift] = React.useState(''); 
+
+       
+
+             const handleChange1 = (event) =>{
+               setEmploy(event.target.value);
+             }
+
+             const handleChanged2 = (event) =>{
+                setShift(event.target.value);
+             }
 
                const handledChange = (event) => {
                 setRole(event.target.value);
@@ -108,7 +141,12 @@ function DesiredRole() {
   
                      const handleChange = (event) => {
                       setPersonName(event.target.value);
-                 setAge(event.target.value);
+                 
+                     };
+
+                     const handleChange3 = (event) => {
+                      setPersonLocation(event.target.value);
+                 
                      };
                       const  handleChanged = (event) => {
                         setAge(event.target.value);
@@ -129,17 +167,19 @@ function DesiredRole() {
    
     return (
         <div>
-            <Header/>
-            <h1 className="heading">Desired Job Role:</h1>
+           
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>
-        
+     
        
         <Grid item xs={12} >
           <Paper className={classes.paper}>
           <form className={classes.form} noValidate>
           <Grid container spacing={5}>
+          <Grid item xs={12} >
+            <h1 className="heading" style={{margin:'auto'}}>Desired Role:</h1>
+            </Grid>
             <Grid item xs={12} >
              <h4>This Information will help the Employer to Know about your Desired Job Profile/Criteria</h4>
               
@@ -163,7 +203,7 @@ function DesiredRole() {
             </Grid>
             <Grid item xs={12} sm={6}  >
             <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label">Name</InputLabel>
+        <InputLabel id="demo-mutiple-name-label">Desire Role</InputLabel>
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
@@ -183,7 +223,6 @@ function DesiredRole() {
                </Grid>
            
             <Grid item xs={12}sm={6} >
-            
             <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Desired Job Type:</InputLabel>
         <Select
@@ -194,56 +233,56 @@ function DesiredRole() {
         >
           <MenuItem value={1}>Permanent</MenuItem>
           <MenuItem value={2}>Contractual</MenuItem>
-     
-        </Select>
+      </Select>
       </FormControl>
             </Grid>
           
            <Grid item xs={12} sm={6} >
            <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">Desired Employment Type:</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          onChange={handleChanged}
+          value={employ}
+          onChange={handleChange1}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
+          <MenuItem value={3}>FullTime</MenuItem>
+          <MenuItem value={4}>PartTime</MenuItem>
+          </Select>
       </FormControl>
              </Grid> 
+
              <Grid item xs={12} sm={6} >
            <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">Preferred Shift:</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          onChange={handleChanged}
+          value={shift}
+          onChange={handleChanged2}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={5}>Morning</MenuItem>
+          <MenuItem value={6}>Night</MenuItem>
+          <MenuItem value={7}>Flexible</MenuItem>
         </Select>
       </FormControl>
              </Grid>
+            
              <Grid item xs={12} sm={6}  >
              <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label">Name</InputLabel>
+        <InputLabel id="demo-mutiple-name-label">Location</InputLabel>
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
           multiple
-          value={personName}
-          onChange={handleChange}
+          value={personLocation}
+          onChange={handleChange3}
           input={<Input />}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
-            <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
-              {name}
+          {locations.map((location) => (
+            <MenuItem key={location} value={location} style={getsStyles(location, personLocation, theme)}>
+              {location}
             </MenuItem>
           ))}
         </Select>
@@ -286,7 +325,7 @@ function DesiredRole() {
       </Grid>
     </div>
     </Container>
-          <Footer/>  
+          
         </div>
     )
 }

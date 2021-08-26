@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -43,8 +42,8 @@ function Employment() {
 
     return (
         <div>
-            <Header/>
-            <h1 className="heading">Employment Details:</h1>
+           
+         
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -54,6 +53,9 @@ function Employment() {
           <Paper className={classes.paper}>
           <form className={classes.form} noValidate>
           <Grid container spacing={2}>
+          <Grid item xs={12} >
+            <h1 className="heading" style={{margin:'auto'}}>Employment:</h1>
+            </Grid>
             <Grid item xs={12} >
               <TextField
                 autoComplete="Your Position/Designation"
@@ -184,7 +186,7 @@ function Employment() {
       </Grid>
     </div>
     </Container>
-          <Footer/>  
+         
         </div>
     )
 }

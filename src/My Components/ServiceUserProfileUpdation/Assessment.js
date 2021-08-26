@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -38,8 +37,8 @@ function Assessment() {
    
     return (
         <div>
-            <Header/>
-            <h1 className="heading">Please attach few Documents:</h1>
+          
+           
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -49,6 +48,9 @@ function Assessment() {
           <Paper className={classes.paper}>
           <form className={classes.form} noValidate>
           <Grid container spacing={5}>
+          <Grid item xs={12} >
+            <h1 className="heading" style={{margin:'auto'}}>Please Upload Few Documents:</h1>
+            </Grid>
             <Grid item xs={6} >
              <h4>Upload any Government Id with Address Proof:</h4>
               
@@ -253,7 +255,7 @@ function Assessment() {
       </Grid>
     </div>
     </Container>
-          <Footer/>  
+           
         </div>
     )
 }

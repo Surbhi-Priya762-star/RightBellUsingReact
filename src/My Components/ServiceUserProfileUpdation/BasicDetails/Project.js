@@ -18,9 +18,9 @@ import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import BackupIcon from '@material-ui/icons/Backup';
-
 import { Button } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
+import Project from '../Project';
 
 
 const drawerWidth = 240;
@@ -87,6 +87,7 @@ export default function PermanentDrawerLeft() {
       >
         
         <div style={{marginTop:'0', paddingRight:'20px', backgroundColor:'#231c2b'}} />
+        <LinkContainer to="/">
         <img
         src={"/Images/logo.png"}
         width="250"
@@ -94,6 +95,7 @@ export default function PermanentDrawerLeft() {
         style={{paddingBottom:'40px'}}
         alt="Right Bell logo"
         />
+        </LinkContainer>
         <Divider />
        
       
@@ -192,11 +194,10 @@ export default function PermanentDrawerLeft() {
      
      
       </Drawer>
-    
       <main className={classes.content}>
         <div className={classes.toolbar} />
       
-    
+     <Project/>
       </main>
     </div>
   );

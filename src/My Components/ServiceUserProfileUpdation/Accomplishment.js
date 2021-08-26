@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -38,8 +37,7 @@ function Accomplishment() {
    
     return (
         <div>
-            <Header/>
-            <h1 className="heading">Accomplishment:</h1>
+           
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -49,6 +47,9 @@ function Accomplishment() {
           <Paper className={classes.paper}>
           <form className={classes.form} noValidate>
           <Grid container spacing={5}>
+          <Grid item xs={12} >
+            <h1 className="heading" style={{margin:'auto'}}>Accomplishment:</h1>
+            </Grid>
             <Grid item xs={12} >
              <h4>Please add or Upload Details of Your Certificate You have achieved or completed related to your desired job Profile if any:</h4>
               
@@ -153,7 +154,7 @@ function Accomplishment() {
       </Grid>
     </div>
     </Container>
-          <Footer/>  
+         
         </div>
     )
 }
