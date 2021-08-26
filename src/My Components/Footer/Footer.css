@@ -1,9 +1,6 @@
 footer{
-   
-    background-color:#281931;
-   
-    width: 100%;
-   
+   background-color:#281931;
+   width: 100%;
     bottom: 0;
     height: 500px;
     padding-top: 10px;
@@ -12,7 +9,7 @@ footer{
   }
   .custom{
     background: #281931;
-    opacity: 0.8;
+ 
     font-size: medium;
     font-family: 'Bree Serif', serif;
     color: hsl(0, 0%, 100%);

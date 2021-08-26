@@ -1,0 +1,29 @@
+.Main-content{
+    background-color: #3a2a44 !important;
+   
+    margin-top: 90px;
+    border-radius: 25px;
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
+    }
+  .heading{
+      text-align: center;
+      margin-top: 30px;
+      font-weight: 900;
+      color: #2c1f33;
+  }  
+  .img{
+     max-width: 100%;
+       }
+      
+   .welcome{
+       color: #f50707;
+       
+       font-weight: 900;
+   }  
+   
+   .text{
+       color:#2c1f33;
+       font-weight: 500;
+   }

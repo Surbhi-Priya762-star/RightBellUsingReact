@@ -1,7 +1,7 @@
 .Main-Div{
         
    width: 100%;
-    padding-top: 10px;
+    padding-top: 50px;
     padding-bottom: 10px;
     height: 2800px;
 
@@ -21,7 +21,7 @@
 .card-body{
   text-align:center;
     background-color:#281931;
-    opacity: 0.8;
+    
     color:#ffffff;
     height: 10px;
     width: 100%;

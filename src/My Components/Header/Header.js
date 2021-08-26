@@ -4,9 +4,10 @@ import { Navbar } from 'react-bootstrap';
 import {Nav} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
-import SignupServiceUser from '../SignUp/ServiceUser';
+
 import {NavDropdown} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
+import ServiceUser from '../SignUp/ServiceUser';
 
 
 function Header() {
@@ -20,7 +21,7 @@ function Header() {
      <LinkContainer to="/">
      <Navbar.Brand href="#home">
       <img
-        src={"/Images/logo.PNG"}
+        src={"/Images/logo.png"}
         width="200"
         height="150"
         className="d-inline-block align-top"
@@ -57,14 +58,19 @@ function Header() {
        </Nav>
     <Nav>
     <NavDropdown title="SignUp" id="collasible-nav-dropdown" style={{marginRight:'20px'}}>
+      
       <LinkContainer to="/ServiceUser">
-        <NavDropdown.Item href="/ServiceUser">ServiceUser</NavDropdown.Item></LinkContainer>
+        <NavDropdown.Item href="/ServiceUser"> As a Service User</NavDropdown.Item></LinkContainer>
+
         <LinkContainer to="/ServiceProvider">
-        <NavDropdown.Item href="/ServiceProvider">ServiProvider</NavDropdown.Item></LinkContainer>
+        <NavDropdown.Item href="/ServiceProvider">As a Service Provider</NavDropdown.Item></LinkContainer>
        </NavDropdown>
-      <Nav.Link eventKey={2} href="#memes" style={{marginRight:'20px'}}>
-        SignIn
-      </Nav.Link>
+     
+     
+      <LinkContainer to="/Login">
+      <Nav.Link href="/Login" style={{marginRight:'20px'}}>SignIn</Nav.Link></LinkContainer>
+
+      
     </Nav>
   </Navbar.Collapse>
    </Navbar>
@@ -72,7 +78,7 @@ function Header() {
     )
 }
 
-<SignupServiceUser/>
+<ServiceUser/>
 
 export default Header;
 
