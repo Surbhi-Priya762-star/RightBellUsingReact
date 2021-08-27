@@ -3,18 +3,14 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { TextField } from '@material-ui/core';
+
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import { useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 
 import EditIcon from '@material-ui/icons/Edit';
-import SaveIcon from '@material-ui/icons/Save';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,263 +29,66 @@ const useStyles = makeStyles((theme) => ({
       fontSize:'10px'
      
     },
-    formControl: {
-        margin: theme.spacing(3),
-        width:'400px',
-      },
-      selectEmpty: {
-        marginTop: theme.spacing(2),
-      },
-      
-      chips: {
-        display: 'flex',
-        flexWrap: 'wrap',
-      },
-
-      chip: {
-        margin: 2,
-      },
-
-      noLabel: {
-        marginTop: theme.spacing(3),
-      },
-
     submit: {
+      margin: theme.spacing(3, 0, 2),
       width:'30%',
     },
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const names = [
-  'Web Developer',
-  'Teacher',
-  'Business Analyst',
-  'Software Engineer',
-  'Full-Stack Developer',
-  'Business Development Executive',
-  'Data Scientist',
-  'Web Designer',
-  'UI-UX Designer',
-  'Project Manager',
-];
-
-const locations = [
-  'Delhi',
-  'Haryana',
-  'Kolkata',
-  'Mumbai',
-  'Pune',
-  'Bangalore',
-  'Gujrat',
-  'Patna',
-  'Hyderabad',
-  'Chennai',
-];
-function getsStyles(location, personLocation, theme) {
-  return {
-    fontWeight:
-      personLocation.indexOf(location) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
-
-
-
 function DesiredRole() {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
-    const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
-    const [personLocation, setPersonLocation] = React.useState([]);
-    const [role, setRole] = React.useState('');
-    const[employ, setEmploy] = React.useState('');
-    const[shift, setShift] = React.useState(''); 
 
-       
-
-             const handleChange1 = (event) =>{
-               setEmploy(event.target.value);
-             }
-
-             const handleChanged2 = (event) =>{
-                setShift(event.target.value);
-             }
-
-               const handledChange = (event) => {
-                setRole(event.target.value);
-                 };
-  
-                     const handleChange = (event) => {
-                      setPersonName(event.target.value);
-                 
-                     };
-
-                     const handleChange3 = (event) => {
-                      setPersonLocation(event.target.value);
-                 
-                     };
-                      const  handleChanged = (event) => {
-                        setAge(event.target.value);
-                                    };
-     /* const handleChangeMultiple = (event) => {
-      const { options } = event.target;
-      const value = [];
-      for (let i = 0, l = options.length; i < l; i += 1) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      setPersonName(value);
-    }; */
-
-    
-
-   
     return (
         <div>
-           
+     
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>
-     
+        
        
         <Grid item xs={12} >
           <Paper className={classes.paper}>
           <form className={classes.form} noValidate>
-          <Grid container spacing={5}>
-          <Grid item xs={12} >
-            <h1 className="heading" style={{margin:'auto'}}>Desired Role:</h1>
+          
+            <Grid container spacing={4}>
+            <Grid item xs={12} >
+            <h1 className="heading" style={{margin:'auto'}}>Please Mention Your Desired Role and Location:</h1>
             </Grid>
             <Grid item xs={12} >
-             <h4>This Information will help the Employer to Know about your Desired Job Profile/Criteria</h4>
+              <TextField
+                autoComplete="Role"
+                name="Role"
+                variant="outlined"
+                required
+                fullWidth
+                id="Role"
+                label="Desired Job Role"
+                className="Text-field"
+                
+              />
               
             </Grid>
-            <Grid item xs={12} sm={6} >
-            <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Functional Area</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          onChange={handleChanged}
-        >
-          <MenuItem value={10}>IT-Software</MenuItem>
-          <MenuItem value={20}>Banking/Insurance</MenuItem>
-          <MenuItem value={30}>Business Intelligence/ Analytics</MenuItem>
-          <MenuItem value={40}>Accounts/Finance</MenuItem>
-        </Select>
-      </FormControl>
-               
-            </Grid>
-            <Grid item xs={12} sm={6}  >
-            <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label">Desire Role</InputLabel>
-        <Select
-          labelId="demo-mutiple-name-label"
-          id="demo-mutiple-name"
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input />}
-          MenuProps={MenuProps}
-        >
-          {names.map((name) => (
-            <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-               </Grid>
-           
-            <Grid item xs={12}sm={6} >
-            <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Desired Job Type:</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={role}
-          onChange={handledChange}
-        >
-          <MenuItem value={1}>Permanent</MenuItem>
-          <MenuItem value={2}>Contractual</MenuItem>
-      </Select>
-      </FormControl>
+            <Grid item xs={12} >
+              <TextField
+                autoComplete="Location"
+                name="Location"
+                variant="outlined"
+                required
+                fullWidth
+                id="Location"
+                label="Preferred Location"
+                className="Text-field"
+                
+              />
+              
             </Grid>
           
-           <Grid item xs={12} sm={6} >
-           <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Desired Employment Type:</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={employ}
-          onChange={handleChange1}
-        >
-          <MenuItem value={3}>FullTime</MenuItem>
-          <MenuItem value={4}>PartTime</MenuItem>
-          </Select>
-      </FormControl>
-             </Grid> 
-
-             <Grid item xs={12} sm={6} >
-           <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Preferred Shift:</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={shift}
-          onChange={handleChanged2}
-        >
-          <MenuItem value={5}>Morning</MenuItem>
-          <MenuItem value={6}>Night</MenuItem>
-          <MenuItem value={7}>Flexible</MenuItem>
-        </Select>
-      </FormControl>
-             </Grid>
+           
+           
             
-             <Grid item xs={12} sm={6}  >
-             <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label">Location</InputLabel>
-        <Select
-          labelId="demo-mutiple-name-label"
-          id="demo-mutiple-name"
-          multiple
-          value={personLocation}
-          onChange={handleChange3}
-          input={<Input />}
-          MenuProps={MenuProps}
-        >
-          {locations.map((location) => (
-            <MenuItem key={location} value={location} style={getsStyles(location, personLocation, theme)}>
-              {location}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-              
-               </Grid>
-              
+           
+             
+           
             </Grid>
           <Button
             type="submit"
@@ -297,9 +96,6 @@ function DesiredRole() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            startIcon={<SaveIcon />}
-            size="large"
-            style={{marginTop:'70px'}}
           >
             Save
           </Button>
@@ -310,8 +106,8 @@ function DesiredRole() {
             fullWidth
             variant="contained"
             color="primary"
-            style={{width:'30%'}}
-            size="large"
+            className={classes.submit}
+          
           >
             Edit
             <EditIcon/>
@@ -319,14 +115,18 @@ function DesiredRole() {
             </Grid>
           </Grid>
         </form>
-      </Paper>
+      
+      
+    
+          </Paper>
         </Grid>
         
       </Grid>
     </div>
     </Container>
-          
+         
         </div>
     )
 }
+
 export default DesiredRole;

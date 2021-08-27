@@ -135,18 +135,7 @@ export default function FullWidthGrid() {
                 autoComplete="current-Phone Number"
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="UserID"
-                label="UserID"
-                type="UserID"
-                id="UserID"
-                autoComplete="current-UserID"
-              />
-            </Grid>
+           
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}

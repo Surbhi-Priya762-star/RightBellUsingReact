@@ -13,8 +13,11 @@ import Footer from '../Footer/Footer';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-
 import {FaGoogle, FaFacebookSquare} from 'react-icons/fa';
+import ServiceUser from '../SignUp/ServiceUser';
+import ServiceProvider from '../SignUp/ServiceProvider';
+import SpeakerGroupIcon from '@material-ui/icons/SpeakerGroup';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import '../SignUp/ServiceUser.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
     const classes = useStyles();
+   
     return (
         <div>
              <Header/>
@@ -123,11 +127,7 @@ function Login() {
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+             
             </Grid>
             <Grid item xs={12} style={{marginTop:'30px'}}>
                 <h5>or Login using:</h5>
@@ -146,15 +146,28 @@ function Login() {
           <Paper className={classes.paper}>
           <img className="img" alt="complex" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80" />
           <h4 className="welcome">WELCOME!</h4>
-          <p className="text"> Please LogIn </p>
-          <img
-        src={"/Images/logo.png"}
-        width="100"
-        height="100"
-       alt="Right Bell logo"
-        />
-          <p className="text">(Every Bells Matter to Us) </p>
           
+         <h5>Not Registered with RightBell?Please Sign Up to experience our Services</h5>
+         
+         <Link href="/ServiceUser" onClick={ServiceUser} style={{fontSize:'20px',fontWeight:'700'}}>
+        As a Service User <SupervisorAccountIcon/>
+      </Link>
+
+      <Link href="/ServiceProvider" onClick={ServiceProvider} style={{fontSize:'20px',fontWeight:'700'}}>
+       As a Service Provider <SpeakerGroupIcon/>
+      </Link>
+      
+      <img
+        src={"/Images/logo.png"}
+        width="80"
+        height="50"
+        className="d-inline-block align-top"
+        alt="Right Bell logo"
+        />
+     
+     
+      
+         
           </Paper>
         </Grid>
 

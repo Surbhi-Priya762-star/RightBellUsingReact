@@ -66,16 +66,22 @@ export default function PermanentDrawerLeft() {
         <Toolbar>
           <Typography variant="h6" noWrap>
           <div style={{marginTop:'50px',padding:'30px',width:'100%'}}>
-            <Box display="flex" flexDirection="row" p={1} m={1} >
-            <Box p={1} >
+            <Box display="flex"  p={1}  >
+            <Box p={1} flexGrow={1}>
            <h1>Surbhi priya</h1>  
             <p><h4>#ID-123456789</h4>  </p>
             </Box>
             <Box p={1} >
              <CircularProgress variant="determinate" value={75} />75%
              </Box>
+             
+  
+             <Box p={1} style={{justifyContent:'flex-end'}}>
+             <AccountCircle/>
              </Box>
-            <span><AccountCircle/></span>
+
+             </Box>
+    
             
            
      
