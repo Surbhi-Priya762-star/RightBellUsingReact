@@ -39,7 +39,7 @@ ReactDOM.render(
         <Route path="/Accomplishment" component={Accomplishment}/>
         <Route path="/Project" component={Project}/>
         <Route path="/Assessment" component={Assessment}/>
-        <Route path="/Basic" component={Basic}/>
+        <Route path="/BasicDetails" component={Basic}/>
         <Route path="/KeySkills" component={KeySkills}/>
         <Route path="/Login" component={Login}/>
       

@@ -57,7 +57,7 @@ function Login() {
     return (
         <div>
              <Header/>
-             <h1 className="heading">Sign IN</h1>
+             
     <Container className="Main-content" >
     <div className={classes.root}>
       <Grid container spacing={3}>

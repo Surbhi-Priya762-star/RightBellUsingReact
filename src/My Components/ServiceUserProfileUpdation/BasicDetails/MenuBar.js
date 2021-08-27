@@ -15,12 +15,13 @@ import WorkIcon from '@material-ui/icons/Work';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import BackupIcon from '@material-ui/icons/Backup';
-
+import { CircularProgress } from '@material-ui/core';
 import { Button } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
+import './MenuBar.css'
 
 
 const drawerWidth = 240;
@@ -64,11 +65,18 @@ export default function PermanentDrawerLeft() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            <div style={{marginTop:'40px'}}>
+          <div style={{marginTop:'50px',padding:'30px',width:'100%'}}>
+            <Box display="flex" flexDirection="row" p={1} m={1} >
+            <Box p={1} >
            <h1>Surbhi priya</h1>  
-            <p><h4>#ID-123456789</h4>   <CircularProgress variant="determinate" value={75} />75%</p>
+            <p><h4>#ID-123456789</h4>  </p>
+            </Box>
+            <Box p={1} >
+             <CircularProgress variant="determinate" value={75} />75%
+             </Box>
+             </Box>
             <span><AccountCircle/></span>
-          
+            
            
      
             </div>
@@ -90,14 +98,14 @@ export default function PermanentDrawerLeft() {
         <img
         src={"/Images/logo.png"}
         width="250"
-        height="190"
+        height="150"
         style={{paddingBottom:'40px'}}
         alt="Right Bell logo"
         />
         <Divider />
        
-      
-        <LinkContainer to="/Basic">
+       
+        <LinkContainer to="/BasicDetails">
         <List>
         <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">
@@ -105,6 +113,7 @@ export default function PermanentDrawerLeft() {
        </List>
            </LinkContainer>
                <Divider/>
+              
                <LinkContainer to="/Dashboard">
         <List>
         <Button style={{width:'200px', marginLeft:'10px'}}
@@ -180,6 +189,7 @@ export default function PermanentDrawerLeft() {
        </List>
            </LinkContainer>
                <Divider/>
+               
                
 
                
