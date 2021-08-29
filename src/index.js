@@ -19,6 +19,9 @@ import Project from './My Components/ServiceUserProfileUpdation/BasicDetails/Pro
 import DesiredRole from './My Components/ServiceUserProfileUpdation/BasicDetails/DesiredRole';
 import Basic from './My Components/ServiceUserProfileUpdation/BasicDetails/Basic';
 import KeySkills from './My Components/ServiceUserProfileUpdation/BasicDetails/KeySkills';
+import BasicServiceProvider from './My Components/ServiceProviderProfileupdation/BasicDetails/BasicServiceProvider';
+import AssessmentServiceProvider from './My Components/ServiceProviderProfileupdation/BasicDetails/AssessmentServiceProvider';
+import Postjob from './My Components/ServiceProviderProfileupdation/BasicDetails/Postjob';
 
 
 
@@ -42,7 +45,9 @@ ReactDOM.render(
         <Route path="/BasicDetails" component={Basic}/>
         <Route path="/KeySkills" component={KeySkills}/>
         <Route path="/Login" component={Login}/>
-      
+        <Route path="/BasicServiceProvider" component={BasicServiceProvider}/>
+        <Route path="/AssessmentServiceProvider" component={AssessmentServiceProvider}/>
+        <Route path="/Postjob" component={Postjob}/>
       </Switch>
     </Router>
   </React.StrictMode>,
