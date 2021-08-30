@@ -12,16 +12,11 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import WorkIcon from '@material-ui/icons/Work';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 import { Box } from '@material-ui/core';
 import { Button } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
-
 import Postjob from '../Postjob';
-
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({

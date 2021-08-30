@@ -12,13 +12,10 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import WorkIcon from '@material-ui/icons/Work';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 import { Box } from '@material-ui/core';
 import { Button } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap'
-
 import BasicServiceProvider from '../BasicServiceProvider'
 
 
@@ -131,7 +128,7 @@ export default function PermanentDrawerLeft() {
        </List>
            </LinkContainer>
                <Divider/>
-               <LinkContainer to="Postjob">
+               <LinkContainer to="/Postjob">
         <List>
            <Button style={{width:'200px', marginLeft:'10px'}}
         variant="outline-dark">

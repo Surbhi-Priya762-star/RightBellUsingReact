@@ -82,15 +82,13 @@ const useStyles = makeStyles((theme) => ({
 function Postjob() {
     const classes = useStyles();
     const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+    const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
     setPersonName(event.target.value);
   };
 
-  
-    
-  const [experience, setExperience] = React.useState('');
+   const [experience, setExperience] = React.useState('');
 
   const handleChanged = (event) => {
     setExperience(event.target.value);
@@ -100,18 +98,14 @@ function Postjob() {
   const handleChanged1 = (event) => {
     setSalary(event.target.value);
   };
+
+  const [education, setEducation] = React.useState('');
+
+  const handleChanged2 = (event) => {
+    setEducation(event.target.value);
+  };
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    return (
+return (
         <div>
           <Container className="Main-content" >
     <div className={classes.root}>
@@ -177,6 +171,26 @@ function Postjob() {
         </Select>
       </FormControl>
                </Grid>
+               <Grid item xs={8}  >
+            <FormControl className={classes.formControl} style={{width:'800px'}}>
+        <InputLabel id="demo-simple-select-label">Education:</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={education}
+          onChange={handleChanged2}
+        >
+           <MenuItem value={1}>Any Graduate</MenuItem> 
+          <MenuItem value={2}>B.E./B.Tech</MenuItem>
+          <MenuItem value={3}>Post Graduate</MenuItem>
+          <MenuItem value={4}>M.tech/M.E.</MenuItem>
+          <MenuItem value={5}>M.B.A.</MenuItem>
+          <MenuItem value={6}>12th or euivalent</MenuItem>
+          <MenuItem value={7}>10th or euivalent</MenuItem>
+
+        </Select>
+      </FormControl>
+               </Grid>   
               <Grid item xs={12}  >
               <TextField
                 variant="outlined"
