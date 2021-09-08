@@ -85,12 +85,12 @@ function Login() {
     // console.log(e);
     //check email
     if (email === null || email === '') {
-      toast.error('Please Enter Email!');
+      alert('Please Enter Email!');
       return;
     }
 
     if (pass === null || pass === '') {
-      toast.error('Please Enter password!');
+      alert('Please Enter password!');
       return;
     }
 
@@ -113,7 +113,7 @@ function Login() {
   const ForgotPassword = async () => {
     //check email
     if (email === null || email === '') {
-      toast.error('Please Enter Email!');
+      alert('Please Enter Email!');
       return;
     }
     await sendForgotPassEmail(email);

@@ -26,7 +26,7 @@ export const registerUser = (data = {}) => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -42,7 +42,7 @@ export const login = (data = {}) => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -57,7 +57,7 @@ export const getUserInfo = (userId) => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -75,7 +75,7 @@ export const manageUserInfo = (userId, data) => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -103,7 +103,7 @@ export const logoutAPI = () => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -122,7 +122,7 @@ export const sendVerificationEmail = () => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -139,7 +139,7 @@ export const verifyEmailAPI = (token) => ApiClient.exec({
         return true;
     },
     onFailure: ({ message }) => {
-        toast.error('Token ' + message);
+        alert('Token ' + message);
         return false;
     },
 });
@@ -156,7 +156,7 @@ export const sendVerificationOTP = () => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
         return false;
     },
 });
@@ -173,7 +173,7 @@ export const verifyOtpAPI = (otp) => ApiClient.exec({
         return true;
     },
     onFailure: ({ message }) => {
-        toast.error('Token ' + message);
+        alert('Token ' + message);
         return false;
     },
 });
@@ -213,7 +213,7 @@ export const sendForgotPassEmail = (email) => ApiClient.exec({
     },
     onFailure: ({ message }) => {
         console.log(message);
-        toast.error(message);
+        alert(message);
 
         return false;
     },
@@ -238,7 +238,7 @@ export const resetPassToken = (token, pass) => ApiClient.exec({
         return true;
     },
     onFailure: ({ message }) => {
-        toast.error(message);
+        alert(message);
         return false;
     },
 });

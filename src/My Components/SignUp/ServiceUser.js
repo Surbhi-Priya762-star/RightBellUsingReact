@@ -76,29 +76,29 @@ export default function FullWidthGrid() {
     //check names
     if (name == null || name == '') {
       console.log('i am here');
-      toast.error('Name cannot be empty');
+      alert('Name cannot be empty');
       return;
     }
     if (lastname == null || lastname == '') {
-      toast.error('LastName cannot be empty');
+      alert('LastName cannot be empty');
       return;
     }
 
     //check email
     if (email == null || email == '') {
-      toast.error('Email cannot be empty');
+      alert('Email cannot be empty');
       return;
     }
 
     //check phone
     if (phone == null || phone == '') {
-      toast.error('Phone cannot be empty');
+      alert('Phone cannot be empty');
       return;
     }
 
     //check password
     if ((pass == null || pass == '') && (pass == pass2)) {
-      toast.error('Password cannot be empty or diffrent');
+      alert('Password cannot be empty or diffrent');
       return;
     }
 

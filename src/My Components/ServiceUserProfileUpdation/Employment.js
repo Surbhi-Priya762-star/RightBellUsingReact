@@ -67,7 +67,7 @@ function Employment({ userInfo }) {
 
     console.log(present);
     if (present == '') {
-      toast.error('Please select course type!!!');
+      alert('Please select course type!!!');
       return;
     }
 
@@ -150,7 +150,7 @@ function Employment({ userInfo }) {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <FormControlLabel
-                        control={<Checkbox onChange={() => setPresent(!present)} value="allowExtraEmails" color="primary" />}
+                        control={<Checkbox checked={work.present} onChange={() => setPresent(!present)} value="allowExtraEmails" color="primary" />}
                         label="This is my most recent Company."
 
                       />

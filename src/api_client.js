@@ -50,7 +50,7 @@ export class ApiClient {
                 return;
             }
 
-            // toast.error(e.response.data.message);
+            // alert(e.response.data.message);
             return onFailure({ data: false, message: e.response.data.message });
 
         }
