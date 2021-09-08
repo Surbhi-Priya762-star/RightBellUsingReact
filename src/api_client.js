@@ -6,7 +6,7 @@ export class ApiClient {
 
     constructor() {
         this.api = axios.create({
-            baseURL: 'http://localhost:3000/v1/',
+            baseURL: 'http://ec2-3-108-251-176.ap-south-1.compute.amazonaws.com:3000/v1/',
         });
     }
 

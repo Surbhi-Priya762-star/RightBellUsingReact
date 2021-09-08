@@ -180,11 +180,11 @@ export const verifyOtpAPI = (otp) => ApiClient.exec({
 
 export const generateResume = (userId, data) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}`;
-    axios.post(`http://localhost:3000/v1/users/resume/${userId}`, data)
+    axios.post(`http://ec2-3-108-251-176.ap-south-1.compute.amazonaws.com:3000/v1/users/resume/${userId}`, data)
         .then(() => {
             setTimeout(() => {
                 // _________
-                axios.get(`http://localhost:3000/v1/users/resume/${userId}`, { responseType: 'blob' })
+                axios.get(`http://ec2-3-108-251-176.ap-south-1.compute.amazonaws.com:3000/v1/users/resume/${userId}`, { responseType: 'blob' })
                     .then((res) => {
                         const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
 
