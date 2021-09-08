@@ -77,10 +77,12 @@ export default function AdminProfile() {
             console.log(1);
             score += 1;
         } if (userInfo.company && userInfo.company.length > 0) {
+            console.log(2);
 
             score += 1;
         }
-        if (userInfo.postjob && userInfo.postjob.length > 0) {
+        if (userInfo.postJob && userInfo.postJob.length > 0) {
+            console.log(2);
 
             score += 1;
         }
