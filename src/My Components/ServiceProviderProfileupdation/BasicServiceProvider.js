@@ -68,10 +68,10 @@ function Basic() {
 
     console.log(companyInfo);
     const data = await manageUserInfo(userInfo.id, { companyInfo: companyInfo });
-    // if (data.id) {
-    //   setlocalUserInfo(data);
-    //   setEdit(false);
-    // }
+    if (data.id) {
+      setlocalUserInfo(data);
+      setEdit(false);
+    }
   }
 
 
