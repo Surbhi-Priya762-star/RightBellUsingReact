@@ -73,11 +73,14 @@ export default function AdminProfile() {
     const calculateFunction = () => {
         var score = 0;
         console.log(userInfo);
-        if (userInfo.education.length > 0) {
+        if (userInfo.companyInfo && userInfo.companyInfo.length > 0) {
             console.log(1);
             score += 1;
-        } if (userInfo.company.length > 0) {
-            console.log(2);
+        } if (userInfo.company && userInfo.company.length > 0) {
+
+            score += 1;
+        }
+        if (userInfo.postjob && userInfo.postjob.length > 0) {
 
             score += 1;
         }
