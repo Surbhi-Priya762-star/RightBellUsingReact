@@ -86,7 +86,7 @@ function Employment({ userInfo }) {
     ];
 
     // console.log(education);
-    const data = manageUserInfo(userInfo.id, { work: work });
+    const data = await manageUserInfo(userInfo.id, { work: work });
     if (data.id) {
       setlocalUserInfo(data);
       setEdit(false);

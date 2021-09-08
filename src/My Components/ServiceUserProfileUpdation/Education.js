@@ -50,7 +50,7 @@ function Education({ userInfo }) {
     if (userInfo == null) {
       history.push(`/`);
     }
-    setValue(userInfo.education[0].courseType);
+    setValue(userInfo.education[0] ? userInfo.education[0].courseType : '');
   }, []);
 
   const [value, setValue] = React.useState('');
