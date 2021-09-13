@@ -48,7 +48,7 @@ export default function FullWidthGrid() {
     const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
     if (userInfo !== null) {
 
-      if (userInfo.role == 'user')
+      if (userInfo.role === 'user')
         history.push(`/profile/${userInfo.id}`);
       else
         history.push(`/adminProfile/${userInfo.id}`);
