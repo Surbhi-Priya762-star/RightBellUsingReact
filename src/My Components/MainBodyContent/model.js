@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
-import Button from '@material-ui/core/Button';
-
-import { useSpring, animated } from "react-spring/web.cjs"; // web.cjs is required for IE 11 support
+import { useSpring, animated } from "react-spring"; // web.cjs is required for IE 11 support
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -15,9 +15,14 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: "5px",
+    height: "180px",
+    padding: theme.spacing(5, 5, 5),
   },
 }));
 
@@ -52,9 +57,18 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal() {
+export default function SpringModal({ setOpenModel, openModel }) {
+  const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (openModel) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [openModel]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,9 +80,6 @@ export default function SpringModal() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-spring
-      </button>
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -83,9 +94,15 @@ export default function SpringModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="spring-modal-title">Your Data has been saved</h2>
-            <Button variant="contained" color="primary">
-              Primary
+            <h2 id="spring-modal-title">Your Data has been saved!</h2>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                history.push("/Login");
+              }}
+            >
+              Go to Login
             </Button>
           </div>
         </Fade>
