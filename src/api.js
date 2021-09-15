@@ -13,8 +13,6 @@ const loginHelper = (tokens, user) => {
     localStorage.setItem('friday-user-info', JSON.stringify(user));
 }
 
-
-
 export const registerUser = (data = {}) => ApiClient.exec({
     method: 'POST',
     url: '/auth/register',

@@ -144,7 +144,7 @@ export default function Profile() {
     <div className={classes.root} >
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar style={{border:'2px solid red'}}>
+        <Toolbar>
           <Typography variant="h6" noWrap>
             <div style={{ marginTop: "50px", padding: "30px", width: "100%" }}>
               <Box display="flex" flexDirection="row" p={1} m={1}>

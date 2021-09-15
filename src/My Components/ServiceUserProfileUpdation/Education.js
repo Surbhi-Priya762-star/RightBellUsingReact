@@ -242,8 +242,8 @@ function Education({ userInfo }) {
                 id="courseType"
                 aria-label="Course Type"
                 name="Course Type1"
-                value={value}
-                onChange={handleChange}
+                // value={value}
+                // onChange={handleChange}
               >
                 <FormControlLabel
                   value="fullTime"
