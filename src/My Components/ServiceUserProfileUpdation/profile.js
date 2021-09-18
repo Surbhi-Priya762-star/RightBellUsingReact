@@ -30,7 +30,8 @@ import Project from "./Project";
 import Accomplishment from "./Accomplishment";
 import DesiredRole from "./DesiredRole";
 import KeySkills from "./KeySkills";
-
+import { logoutAPI } from '../../api';
+import { NavDropdown } from 'react-bootstrap';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -154,7 +155,7 @@ export default function Profile() {
                     <h4>#{userInfo._displayId}</h4>{" "}
                   </p>
                 </Box>
-                <Box p={1}>
+                <Box  p={1}>
                   <CircularProgress
                     style={{ color: normalised >= 90 ? "green" : "white" }}
                     size={60}
@@ -163,11 +164,25 @@ export default function Profile() {
                   />
                   {normalised.toFixed(2)}%
                 </Box>
+                <div style={{  width: '60vw', height: '100px', justifyContent: 'flex-end', display: 'flex', alignItems: 'center' }}>
+                  <div onClick={() => {
+
+                  }}>
+                    <AccountCircle />
+                  </div>
+                  <NavDropdown title={userInfo.name} id="collasible-nav-dropdown" style={{ marginRight: '20px' }}>
+
+                    <LinkContainer to={userInfo.role == 'user' ? `/profile/${userInfo.id}` : `/adminProfile/${userInfo.id}`}>
+                      <NavDropdown.Item>My Account </NavDropdown.Item>
+                    </LinkContainer>
+                    {/* <LinkContainer to="/" onClick={logoutAPI}> */}
+                    <NavDropdown.Item onClick={logoutAPI}>Logout</NavDropdown.Item>
+                    {/* </LinkContainer> */}
+                  </NavDropdown>
+                </div>
               </Box>
-              <span>
-                <AccountCircle />
-              </span>
             </div>
+            
           </Typography>
         </Toolbar>
       </AppBar>

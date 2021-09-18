@@ -61,63 +61,64 @@ export default function FullWidthGrid() {
   const [phone, setPhone] = useState(null);
 
   const handleSubmit = async (e) => {
-    // console.log(e);
+    console.log(e);
 
-    //check names
-    // if (name == null || name == "") {
-    //   console.log("i am here");
-    //   alert("Name cannot be empty");
-    //   return;
-    // }
-    // if (lastname == null || lastname == "") {
-    //   alert("LastName cannot be empty");
-    //   return;
-    // }
+    // check names
+    if (name == null || name == "") {
+      console.log("i am here");
+      alert("Name cannot be empty");
+      return;
+    }
+    if (lastname == null || lastname == "") {
+      alert("LastName cannot be empty");
+      return;
+    }
 
-    // //check email
-    // if (email == null || email == "") {
-    //   alert("Email cannot be empty");
-    //   return;
-    // }
+    //check email
+    if (email == null || email == "") {
+      alert("Email cannot be empty");
+      return;
+    }
 
-    // //check phone
-    // if (phone == null || phone == "") {
-    //   alert("Phone cannot be empty");
-    //   return;
-    // }
+    //check phone
+    if (phone == null || phone == "") {
+      alert("Phone cannot be empty");
+      return;
+    }
 
-    // //check password
-    // if ((pass == null || pass === "") && pass === pass2) {
-    //   alert("Password cannot be empty or diffrent");
-    //   return;
-    // }
+    //check password
+    if ((pass == null || pass === "") && pass === pass2) {
+      alert("Password cannot be empty or diffrent");
+      return;
+    }
 
-    // var response = {};
+    var response = {};
 
-    // response = {
-    //   name: name + " " + lastname,
-    //   email: email,
-    //   password: pass,
-    //   phone: phone,
-    //   role: "user",
-    //   // education: [],
-    //   // work: [],
-    //   // company: [],
-    // };
-    // console.log(response);
+    response = {
+      name: name + " " + lastname,
+      email: email,
+      password: pass,
+      phone: phone,
+      role: "user",
+      // education: [],
+      // work: [],
+      // company: [],
+    };
+    console.log(response);
 
     // call the API
-    // if (
-    //   response && // 👈 null and undefined check
-    //   Object.keys(response).length !== 0
-    // ) {
-    //call the api
+    if (
+      response && // 👈 null and undefined check
+      Object.keys(response).length !== 0
+    ) {
+    // call the api
 
-    setshowModal(true);
+    
 
-    // const res = await registerUser(response);
-    // console.log(res);
-    // }
+    const res = await registerUser(response);
+      setshowModal(true);
+    console.log(res);
+    }
   };
 
   return (

@@ -70,14 +70,15 @@ export default function SideBar({ changeSlide }) {
         style={{
           marginTop: "0",
           paddingRight: "20px",
-          backgroundColor: "#231c2b",
+          // backgroundColor: "#231c2b",
+          backgroundColor: "pink",
         }}
       />
       <img
         src={"/Images/logo.png"}
         width="250"
         height="150"
-        style={{ paddingBottom: "0px" }}
+        style={{ paddingBottom: "0px", position: 'fixed' ,top: 0, zIndex: 100, }}
         alt="Right Bell logo"
       />
       <Divider />
@@ -89,7 +90,7 @@ export default function SideBar({ changeSlide }) {
           flexDirection: "column",
           justifyContent: "space-between",
           boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-          paddingTop: "10px",
+          paddingTop: "150px",
           paddingBottom: "15px",
           paddingLeft: "15px",
           paddingRight: "15px",

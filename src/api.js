@@ -19,7 +19,7 @@ export const registerUser = (data = {}) => ApiClient.exec({
     data,
     onSuccess: (data) => {
         loginHelper(data.tokens, data.user);
-        window.location.href = '/';
+        // window.location.href = '/';
         return data;
     },
     onFailure: ({ message }) => {
