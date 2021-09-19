@@ -13,15 +13,13 @@ const loginHelper = (tokens, user) => {
     localStorage.setItem('friday-user-info', JSON.stringify(user));
 }
 
-
-
 export const registerUser = (data = {}) => ApiClient.exec({
     method: 'POST',
     url: '/auth/register',
     data,
     onSuccess: (data) => {
         loginHelper(data.tokens, data.user);
-        window.location.href = '/';
+        // window.location.href = '/';
         return data;
     },
     onFailure: ({ message }) => {

@@ -12,7 +12,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import { logoutAPI } from '../../api';
 
-
+import AccountCircle from "@material-ui/icons/AccountCircle";
 
 
 function Header() {
@@ -68,17 +68,18 @@ function Header() {
           </Nav>
           {userInfo && userInfo.name ?
 
-
+            <>
+              <AccountCircle />
             <NavDropdown title={userInfo.name} id="collasible-nav-dropdown" style={{ marginRight: '20px' }}>
 
               <LinkContainer to={userInfo.role == 'user' ? `/profile/${userInfo.id}` : `/adminProfile/${userInfo.id}`}>
-                <NavDropdown.Item> Account </NavDropdown.Item>
+                <NavDropdown.Item>My Account </NavDropdown.Item>
               </LinkContainer>
               {/* <LinkContainer to="/" onClick={logoutAPI}> */}
               <NavDropdown.Item onClick={logoutAPI}>Logout</NavDropdown.Item>
               {/* </LinkContainer> */}
             </NavDropdown>
-
+            </>
             :
             <Nav>
 

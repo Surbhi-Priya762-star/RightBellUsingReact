@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { TextField } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import './ServiceUser.css';
-import { ToastContainer, toast } from 'react-toastify';
-import { registerUser } from '../../api';
-import { useHistory } from 'react-router-dom';
-
-
-
-
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import { TextField } from "@material-ui/core";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import RrightBellModal from "../MainBodyContent/model";
+import "./ServiceUser.css";
+import { ToastContainer, toast } from "react-toastify";
+import { registerUser } from "../../api";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,18 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
-
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
-
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    width: '50%',
+    width: "50%",
   },
 }));
 
@@ -44,108 +39,108 @@ export default function FullWidthGrid() {
   const classes = useStyles();
   const history = useHistory();
 
+  const [showModal, setshowModal] = useState(false);
+
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+    const userInfo = JSON.parse(localStorage.getItem("friday-user-info"));
     if (userInfo !== null) {
-
-      if (userInfo.role == 'user')
-        history.push(`/profile/${userInfo.id}`);
-      else
-        history.push(`/adminProfile/${userInfo.id}`);
-
-
+      if (userInfo.role === "user") history.push(`/profile/${userInfo.id}`);
+      else history.push(`/adminProfile/${userInfo.id}`);
     }
   }, []);
 
-
+  const [open, setOpen] = React.useState(false);
   const [name, setName] = useState(null);
   const [lastname, setLastName] = useState(null);
-
 
   const [email, setEmail] = useState(null);
 
   const [pass, setPass] = useState(null);
   const [pass2, setPass2] = useState(null);
 
-
   const [phone, setPhone] = useState(null);
 
   const handleSubmit = async (e) => {
-    // console.log(e);
+    console.log(e);
 
-    //check names
-    if (name == null || name == '') {
-      console.log('i am here');
-      alert('Name cannot be empty');
+    // check names
+    if (name == null || name == "") {
+      console.log("i am here");
+      alert("Name cannot be empty");
       return;
     }
-    if (lastname == null || lastname == '') {
-      alert('LastName cannot be empty');
+    if (lastname == null || lastname == "") {
+      alert("LastName cannot be empty");
       return;
     }
 
     //check email
-    if (email == null || email == '') {
-      alert('Email cannot be empty');
+    if (email == null || email == "") {
+      alert("Email cannot be empty");
       return;
     }
 
     //check phone
-    if (phone == null || phone == '') {
-      alert('Phone cannot be empty');
+    if (phone == null || phone == "") {
+      alert("Phone cannot be empty");
       return;
     }
 
     //check password
-    if ((pass == null || pass == '') && (pass == pass2)) {
-      alert('Password cannot be empty or diffrent');
+    if ((pass == null || pass === "") && pass === pass2) {
+      alert("Password cannot be empty or diffrent");
       return;
     }
-
 
     var response = {};
 
     response = {
-      name: name +
-        " " + lastname,
+      name: name + " " + lastname,
       email: email,
       password: pass,
       phone: phone,
-      role: 'user',
+      role: "user",
       // education: [],
       // work: [],
       // company: [],
-
-
-    }
+    };
     console.log(response);
 
-
     // call the API
-    if (response // 👈 null and undefined check
-      && Object.keys(response).length !== 0) {
+    if (
+      response && // 👈 null and undefined check
+      Object.keys(response).length !== 0
+    ) {
+    // call the api
 
-      //call the api
-      const res = await registerUser(response);
-      console.log(res);
+    
+
+    const res = await registerUser(response);
+      setshowModal(true);
+    console.log(res);
     }
-  }
+  };
 
   return (
     <>
       <Header />
       <h1 className="heading">Sign Up as a Service User</h1>
-      <Container className="Main-content" >
+      <Container className="Main-content">
         <div className={classes.root}>
           <Grid container spacing={3}>
-
             <Grid item xs={12} sm={6}>
               <Paper className={classes.paper}>
-                <img className="img" alt="complex" src="https://images.unsplash.com/photo-1536158614364-49b81421db1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" />
+                <img
+                  className="img"
+                  alt="complex"
+                  src="https://images.unsplash.com/photo-1536158614364-49b81421db1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                />
                 <h4 className="welcome">WELCOME!</h4>
                 <p className="text"> Create an Account </p>
-                <h5 className="welcome">RIGHTBELL<span className="text">(Every Bells Matter to Us) </span></h5>
-
+                <h5 className="welcome">
+                  RIGHTBELL
+                  <span className="text">(Every Bells Matter to Us) </span>
+                </h5>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -161,7 +156,6 @@ export default function FullWidthGrid() {
                       fullWidth
                       id="firstName"
                       label="First Name"
-
                       className="Text-field"
                       onChange={(e) => {
                         // console.log(e.target.value);
@@ -214,8 +208,6 @@ export default function FullWidthGrid() {
                         setPass(e.target.value);
                       }}
                     />
-
-
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
@@ -252,7 +244,9 @@ export default function FullWidthGrid() {
 
                   <Grid item xs={12}>
                     <FormControlLabel
-                      control={<Checkbox value="allowExtraEmails" color="primary" />}
+                      control={
+                        <Checkbox value="allowExtraEmails" color="primary" />
+                      }
                       label="I want to receive all updates via email."
                     />
                   </Grid>
@@ -262,14 +256,16 @@ export default function FullWidthGrid() {
                   fullWidth
                   variant="contained"
                   color="primary"
+                  style={{ paddingTop: "10px", paddingBottom: "11px", fontSize: '1.1rem' }}
                   onClick={handleSubmit}
-                // className={classes.submit}
+
+                  // className={classes.submit}
                 >
-                  Sign Up
+                  SIGN UP
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link href="#" variant="body2">
+                    <Link href="/Login" variant="body2">
                       Already have an account? Sign in
                     </Link>
                   </Grid>
@@ -277,11 +273,10 @@ export default function FullWidthGrid() {
                 {/* </form> */}
               </Paper>
             </Grid>
-
           </Grid>
+          <RrightBellModal openModel={showModal} setOpenModel={setshowModal} />
         </div>
       </Container>
-
       <Footer />
     </>
   );
