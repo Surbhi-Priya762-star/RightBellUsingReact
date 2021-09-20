@@ -174,7 +174,7 @@ function Login() {
                     color="primary"
                     // className={classes.submit}
                     onClick={handleSubmit}
-                    style={{ alignItems: "center", justifySelf: "center" }}
+                    style={{ alignItems: "center",width: '150px', background: "#07222E", justifySelf: "center" }}
                   >
                     Sign In
                   </Button>

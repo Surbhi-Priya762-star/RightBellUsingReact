@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -111,13 +112,11 @@ export default function FullWidthGrid() {
       response && // 👈 null and undefined check
       Object.keys(response).length !== 0
     ) {
-    // call the api
+      // call the api
 
-    
-
-    const res = await registerUser(response);
+      const res = await registerUser(response);
       setshowModal(true);
-    console.log(res);
+      console.log(res);
     }
   };
 
@@ -256,7 +255,12 @@ export default function FullWidthGrid() {
                   fullWidth
                   variant="contained"
                   color="primary"
-                  style={{ paddingTop: "10px", paddingBottom: "11px", fontSize: '1.1rem' }}
+                  style={{
+                    paddingTop: "10px",
+                    background: "#07222E",
+                    paddingBottom: "11px",
+                    fontSize: "1.1rem",
+                  }}
                   onClick={handleSubmit}
 
                   // className={classes.submit}

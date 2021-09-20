@@ -106,12 +106,6 @@ function Basic() {
 
                     </Grid>
 
-
-
-
-
-
-
                   </Grid>
                   {edit && <Button
                     type="submit"

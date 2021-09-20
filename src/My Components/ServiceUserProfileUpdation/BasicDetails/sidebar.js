@@ -1,65 +1,25 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import WorkIcon from "@material-ui/icons/Work";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
-import Box from "@material-ui/core/Box";
 import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
 import BackupIcon from "@material-ui/icons/Backup";
-import { CircularProgress } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { LinkContainer } from "react-router-bootstrap";
 import "./MenuBar.css";
-import mainLogo from "../../../assest/logo.png";
 import { generateResume } from "../../../api";
 import { logoutAPI } from "../../../api";
 import { useHistory } from "react-router-dom";
 import { sidebarStyle } from "../../../styles/sidebar";
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    height: "150px",
-    backgroundColor: "#231c2b",
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
-
 export default function SideBar({ changeSlide }) {
   const history = useHistory();
-  const classes = useStyles();
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("friday-user-info"))
   );
@@ -69,8 +29,8 @@ export default function SideBar({ changeSlide }) {
       <div
         style={{
           marginTop: "0",
+          paddingLeft: "20px",
           paddingRight: "20px",
-          // backgroundColor: "#231c2b",
           backgroundColor: "pink",
         }}
       />
@@ -78,29 +38,20 @@ export default function SideBar({ changeSlide }) {
         src={"/Images/logo.png"}
         width="250"
         height="150"
-        style={{ paddingBottom: "0px", position: 'fixed' ,top: 0, zIndex: 100, }}
+        style={{ paddingBottom: "0px", position: "fixed", top: 0, zIndex: 100 }}
         alt="Right Bell logo"
       />
       <Divider />
 
       <div
         style={{
-          borderRight: "1px solid #f1f2f6",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-          paddingTop: "150px",
-          paddingBottom: "15px",
-          paddingLeft: "15px",
-          paddingRight: "15px",
-          height: "800px",
+          ...sidebarStyle.semiRoot,
         }}
       >
         <List>
           <Button
             onClick={() => changeSlide("/BasicDetails")}
-            style={sidebarStyle.btnStyle}
+            style={{ ...sidebarStyle.btnStyle, paddingTop: "15px" }}
             variant="outline-dark"
           >
             <h5 style={sidebarStyle.btnH5}>BasicDetails</h5> <ExitToAppIcon />
@@ -179,7 +130,7 @@ export default function SideBar({ changeSlide }) {
         <List>
           <Button
             onClick={() => changeSlide("/Accomplishment")}
-            style={sidebarStyle.btnStyle}
+            style={{ ...sidebarStyle.btnStyle, width: "auto" }}
             variant="outline-dark"
           >
             <h5 style={sidebarStyle.btnH5}>Accomplishment</h5>{" "}
@@ -217,7 +168,11 @@ export default function SideBar({ changeSlide }) {
         <List>
           <Button
             onClick={() => generateResume(userInfo.id, userInfo)}
-            style={{...sidebarStyle.btnStyle, background: "#576574"}}
+            style={{
+              ...sidebarStyle.btnStyle,
+              background: "#07222E",
+              marginTop: "10px",
+            }}
             variant="contained"
             color="primary"
           >
@@ -232,7 +187,11 @@ export default function SideBar({ changeSlide }) {
                 history.push("/Login");
               });
             }}
-            style={{...sidebarStyle.btnStyle, background: "#576574"}}
+            style={{
+              ...sidebarStyle.btnStyle,
+              background: "#07222E",
+              width: "178px",
+            }}
             variant="contained"
             color="primary"
           >

@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, { useState, useEffect } from "react";
 
 import Paper from "@material-ui/core/Paper";
@@ -6,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import { TextField } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import { EmployementStyle } from "../../styles/EmployementStyle";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Radio from "@material-ui/core/Radio";
@@ -43,17 +44,30 @@ const useStyles = makeStyles((theme) => ({
 function Employment({ userInfo }) {
   const [addEducationCount, setAddEducationCount] = useState([
     {
-      position: "",
-      org: "",
-      startDate: "",
-      endDate: "",
-      currentSalary: "",
-      expSalary: "",
-      present: "",
-      profile: "",
-      noticePeriod: "",
+      position: "web dev",
+      org: "abc.pvt.ltd",
+      startDate: "2003-09-20",
+      endDate: "2004-04-21",
+      currentSalary: "150",
+      expSalary: "4000000",
+      present: false,
+      profile: "test  web description ",
+      noticePeriod: "45",
+    },
+
+    {
+      position: "Mobile dev",
+      org: "abc.pvt.ltd",
+      startDate: "2003-09-20",
+      endDate: "2004-04-21",
+      currentSalary: "150",
+      expSalary: "4000000",
+      present: true,
+      profile: "test mobile  description ",
+      noticePeriod: "45",
     },
   ]);
+
   const [singleEmp, setSingleEmp] = useState({
     position: "",
     org: "",
@@ -65,7 +79,10 @@ function Employment({ userInfo }) {
     profile: "",
     noticePeriod: "",
   });
+
   const [btnDisable, setBtnDisable] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [finalData, setfinalData] = useState(null);
   const [localUserInfo, setlocalUserInfo] = useState(userInfo);
 
   const classes = useStyles();
@@ -75,9 +92,9 @@ function Employment({ userInfo }) {
   useEffect(() => {
     // console.log("<><><> ", addEducationCount);
     // console.log(...addEducationCount[addEducationCount.length])
-    const refinedEmp = addEducationCount.filter((d) => d.position !== "");
-    console.log(refinedEmp);
-  }, [addEducationCount]);
+  }, [addEducationCount, singleEmp]);
+
+  console.log("<><><><><>", addEducationCount);
 
   useEffect(() => {
     if (userInfo == null) {
@@ -89,11 +106,15 @@ function Employment({ userInfo }) {
   const [present, setPresent] = useState(false);
 
   const [work, setWork] = useState(userInfo.work[0] || {});
-  const [edit, setEdit] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (addEducationCount.length < 2) {
+      console.log("hi sir g", [singleEmp]); // if user enter only one detail -------------> checkpoint
+    }
+
+    // setAddEducationCount(finalData)
     // console.log("<><><><> ", e.target)
 
     // console.log(present);
@@ -102,20 +123,8 @@ function Employment({ userInfo }) {
     //   return;
     // }
 
-    const work = [
-      {
-        position: e.target.position.value,
-        org: e.target.org.value,
-        startDate: e.target.startDate.value,
-        endDate: e.target.endDate.value,
-        currentSalary: e.target.currentSalary.value,
-        expSalary: e.target.expSalary.value,
-        present: e.target.present.value,
-        profile: e.target.profile.value,
-        noticePeriod: e.target.notice.value,
-      },
-    ];
-    // console.log("><><><><><>", work);
+    const work = addEducationCount;
+    console.log("><><><><><>", finalData);
 
     // // console.log(education);
     // const data = await manageUserInfo(userInfo.id, { work: work });
@@ -126,24 +135,17 @@ function Employment({ userInfo }) {
   };
 
   const addEducation = () => {
-    if (addEducationCount.length < 4) {
-      // setAddEducationCount((previousData) => [
-      //   ...previousData,
-      //   {
-      //     position: "",
-      //     org: "",
-      //     startDate: "",
-      //     endDate: "",
-      //     currentSalary: "",
-      //     expSalary: "",
-      //     present: "",
-      //     profile: "",
-      //     noticePeriod: "",
-      //   },
-      // ]);
-    } else {
+    if (!(addEducationCount.length < 5)) {
       setBtnDisable(true);
     }
+  };
+
+  const handleChangeFunc = (key, value, index, state) => {
+    const obj = { ...state[index] };
+    obj[key] = value;
+    const arr = [...state];
+    arr[index] = obj;
+    setAddEducationCount(arr);
   };
 
   return (
@@ -178,13 +180,19 @@ function Employment({ userInfo }) {
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="Your Position/Designation"
-              // value={userInfo.phone}
+              value={addEducationCount[index].position}
               name="position"
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  position: e.target.value,
-                }))
+              onChange={
+                edit
+                  ? (e) => {
+                      handleChangeFunc(
+                        "position",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      );
+                    }
+                  : null
               }
               aria-describedby="component-helper-text"
             />
@@ -193,12 +201,17 @@ function Employment({ userInfo }) {
               id="component-helper"
               label="Your Organization"
               name="org"
-              // value={userInfo.phone}
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  org: e.target.value,
-                }))
+              value={addEducationCount[index].org}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "org",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
               }
               aria-describedby="component-helper-text"
             />
@@ -207,8 +220,18 @@ function Employment({ userInfo }) {
             <FormControlLabel
               control={
                 <Checkbox
-                  // checked={}
-                  // onChange={(e) => setPresent(!present)}
+                  checked={addEducationCount[index].present}
+                  onChange={
+                    edit
+                      ? (e) =>
+                          handleChangeFunc(
+                            "present",
+                            e.target.value,
+                            index,
+                            addEducationCount
+                          )
+                      : null
+                  }
                   name="present"
                   value="allowExtraEmails"
                   color="primary"
@@ -230,16 +253,22 @@ function Employment({ userInfo }) {
               style={{ width: "45%", fontSize: "1rem" }}
               id="date"
               color="primary"
-              label="Starting Work from (DD-MM-YYYY)*"
+              label="Starting Work from*"
               type="date"
               // defaultValue="2017-05-24"
               name="startDate"
+              value={addEducationCount[index].startDate}
               className={classes.textField}
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  startDate: e.target.value,
-                }))
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "startDate",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
               }
               InputLabelProps={{
                 shrink: true,
@@ -248,16 +277,24 @@ function Employment({ userInfo }) {
             <TextField
               style={{ width: "45%", fontSize: "1rem" }}
               id="date"
-              label="Work Till (DD-MM-YYYY)*"
+              label="Work Till*"
               type="date"
               name="endDate"
               // defaultValue="2017-05-24"
+              value={addEducationCount[index].endDate}
               className={classes.textField}
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  endDate: e.target.value,
-                }))
+              onChange={
+                edit
+                  ? (e) =>
+                      setSingleEmp((previousData) =>
+                        handleChangeFunc(
+                          "endDate",
+                          e.target.value,
+                          index,
+                          addEducationCount
+                        )
+                      )
+                  : null
               }
               InputLabelProps={{
                 shrink: true,
@@ -278,12 +315,17 @@ function Employment({ userInfo }) {
               label="Current Salary"
               type="number"
               name="currentSalary"
-              // value={userInfo.phone}
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  currentSalary: e.target.value,
-                }))
+              value={addEducationCount[index].currentSalary}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "currentSalary",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
               }
               aria-describedby="component-helper-text"
             />
@@ -293,12 +335,17 @@ function Employment({ userInfo }) {
               type="number"
               label="Expected Salary"
               name="expSalary"
-              // value={userInfo.phone}
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  expSalary: e.target.value,
-                }))
+              value={addEducationCount[index].expSalary}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "expSalary",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
               }
               aria-describedby="component-helper-text"
             />
@@ -317,11 +364,17 @@ function Employment({ userInfo }) {
               aria-label="minimum height"
               minRows={3}
               name="profile"
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  profile: e.target.value,
-                }))
+              value={addEducationCount[index].profile}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "profile",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
               }
               placeholder="Describe Your Job Profile in Brief"
             />
@@ -336,12 +389,17 @@ function Employment({ userInfo }) {
               id="component-helper"
               label="Notice Periods in Days"
               name="notice"
-              // value={userInfo.phone}
-              onChange={(e) =>
-                setSingleEmp((previousData) => ({
-                  ...previousData,
-                  noticePeriod: e.target.value,
-                }))
+              value={addEducationCount[index].noticePeriod}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "notice",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
               }
               aria-describedby="component-helper-text"
             />
@@ -377,13 +435,7 @@ function Employment({ userInfo }) {
         }}
       >
         <Button
-          style={{
-            width: "150px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            fontSize: "1rem",
-            background: "#576574",
-          }}
+          style={{ ...EmployementStyle.btnStyle }}
           type="submit"
           fullWidth
           variant="contained"
@@ -392,20 +444,17 @@ function Employment({ userInfo }) {
           Save
         </Button>
         <Button
-          style={{
-            width: "150px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            fontSize: "1rem",
-            background: "#576574",
-          }}
+          style={{ ...EmployementStyle.btnStyle }}
           type="submit"
+          onClick={() => {
+            setEdit((previousData) => !previousData);
+          }}
           fullWidth
           variant="contained"
           color="primary"
         >
-          Edit
-          <i class="fas fa-pen"></i>
+          {edit ? "Cancel" : "Edit"}
+          {!edit ? <i class="fas fa-pen"></i> : null}
         </Button>
       </div>
     </form>
