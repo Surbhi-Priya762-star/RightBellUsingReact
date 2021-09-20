@@ -39,16 +39,6 @@ function Header() {
                 />
               </Navbar.Brand>
             </LinkContainer>
-            <Form className="search ml-auto ">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="mr-lg-2 form-control"
-                aria-label="Search"
-              />
-            </Form>
-
-
             <Navbar.Toggle />
           </Navbar>
 
@@ -60,7 +50,7 @@ function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <LinkContainer to="/">
-              <Nav.Link href="/" style={{ marginLeft: '20px', marginRight: '20px' }}>Home</Nav.Link></LinkContainer>
+            <Nav.Link href="/" style={{ marginLeft: '20px', marginRight: '20px' }}>Home</Nav.Link></LinkContainer>
             <Nav.Link href="About" style={{ marginRight: '20px' }}>About Us</Nav.Link>
             <Nav.Link href="#Career" style={{ marginRight: '20px' }}>Career</Nav.Link>
             <Nav.Link href="#Gallery" style={{ marginRight: '20px' }}>Gallery</Nav.Link>
