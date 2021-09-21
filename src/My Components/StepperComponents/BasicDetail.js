@@ -1,53 +1,40 @@
 import React from "react";
-
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { EmployementStyle } from "../../styles/EmployementStyle";
-import { RootContainer } from "../../styles/RootContainer";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import Box from "@material-ui/core/Box";
 import { Typography } from "@material-ui/core";
+import InputLabel from "@mui/material/InputLabel";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(8),
-    fontSize: "10px",
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    width: "30%",
-  },
-}));
-
-function Basic({ userInfo }) {
+function BasicDetail({ userInfo }) {
   const [emailModal, setEmailModal] = React.useState(false);
   const [mobileModal, setMobileModal] = React.useState(false);
   const [basicDetail, setBasicDetail] = React.useState({
-    Name: "vishal",
-    email: "abc@gmail.com",
-    phoneNumber: "8729389238",
-    DOB: "2003-09-20",
+    Name: "",
+    email: "",
+    phoneNumber: "",
+    DOB: "",
   });
-  const [edit, setEdit] = React.useState(false);
-  const classes = useStyles();
 
-  console.log(">>>>>", userInfo);
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("hii")
+    console.log(basicDetail);
+  };
 
   return (
-    <div
+    <form
       style={{
-        ...RootContainer.rootContainer,
+        boxShadow:
+          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+        width: "60%",
+        height: "auto",
+        padding: "45px",
+        borderRadius: "6px",
+        margin: "63px auto 160px auto",
       }}
+      onSubmit={handleSubmit}
     >
       <div style={{ marginBottom: "20px" }}>
         <h2>Basic Details</h2>
@@ -60,14 +47,11 @@ function Basic({ userInfo }) {
             label="Name"
             name="Name"
             value={basicDetail.Name}
-            onChange={
-              edit
-                ? (e) =>
-                    setBasicDetail((previousData) => ({
-                      ...previousData,
-                      Name: e.target.value,
-                    }))
-                : null
+            onChange={(e) =>
+              setBasicDetail((previousData) => ({
+                ...previousData,
+                Name: e.target.value,
+              }))
             }
             aria-describedby="component-helper-text"
           />
@@ -87,14 +71,11 @@ function Basic({ userInfo }) {
             label="Email"
             name="email"
             value={basicDetail.email}
-            onChange={
-              edit
-                ? (e) =>
-                    setBasicDetail((previousData) => ({
-                      ...previousData,
-                      email: e.target.value,
-                    }))
-                : null
+            onChange={(e) =>
+              setBasicDetail((previousData) => ({
+                ...previousData,
+                email: e.target.value,
+              }))
             }
             aria-describedby="component-helper-text"
           />
@@ -124,14 +105,11 @@ function Basic({ userInfo }) {
             name="phoneNumber"
             type="number"
             value={basicDetail.phoneNumber}
-            onChange={
-              edit
-                ? (e) =>
-                    setBasicDetail((previousData) => ({
-                      ...previousData,
-                      phoneNumber: e.target.value,
-                    }))
-                : null
+            onChange={(e) =>
+              setBasicDetail((previousData) => ({
+                ...previousData,
+                phoneNumber: e.target.value,
+              }))
             }
             aria-describedby="component-helper-text"
           />
@@ -147,21 +125,25 @@ function Basic({ userInfo }) {
         </div>
 
         <div style={{ marginTop: "30px", marginBottom: "20px" }}>
+          <InputLabel
+            shrink
+            htmlFor="bootstrap-input"
+            style={{ fontSize: "23px" }}
+          >
+            Date of Birth
+          </InputLabel>
+
           <TextField
             style={{ width: "75%", fontSize: "1rem" }}
             id="component-helper"
-            label="Date of Birth"
             type="date"
             value={basicDetail.DOB}
             name="DOB"
-            onChange={
-              edit
-                ? (e) =>
-                    setBasicDetail((previousData) => ({
-                      ...previousData,
-                      DOB: e.target.value,
-                    }))
-                : null
+            onChange={(e) =>
+              setBasicDetail((previousData) => ({
+                ...previousData,
+                DOB: e.target.value,
+              }))
             }
             aria-describedby="component-helper-text"
           />
@@ -185,18 +167,6 @@ function Basic({ userInfo }) {
           >
             Save
           </Button>
-          <Button
-            style={{ ...EmployementStyle.btnStyle }}
-            fullWidth
-            variant="contained"
-            onClick={() => {
-              setEdit((previousData) => !previousData);
-            }}
-            color="primary"
-          >
-            {edit ? "Cancel" : "Edit"}
-            {!edit ? <i class="fas fa-pen"></i> : null}
-          </Button>
         </div>
       </div>
       <Modal
@@ -213,7 +183,12 @@ function Basic({ userInfo }) {
             style={{ width: "100%", height: 40 }}
             placeholder="Enter Otp"
           />
-          <Button color="secondary" variant="contained" title="Verify Otp">
+          <Button
+            type="button"
+            color="secondary"
+            variant="contained"
+            title="Verify Otp"
+          >
             Verify Otp
           </Button>
         </Box>
@@ -232,16 +207,21 @@ function Basic({ userInfo }) {
             style={{ width: "100%", height: 40 }}
             placeholder="Enter Otp"
           />
-          <Button color="secondary" variant="contained" title="Verify Otp">
+          <Button
+            type="button"
+            color="secondary"
+            variant="contained"
+            title="Verify Otp"
+          >
             Verify Otp
           </Button>
         </Box>
       </Modal>
-    </div>
+    </form>
   );
 }
 
-export default Basic;
+export default BasicDetail;
 const style = {
   borderRadius: 20,
   position: "absolute",
