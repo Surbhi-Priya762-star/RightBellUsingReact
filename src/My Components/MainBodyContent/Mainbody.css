@@ -1,27 +1,20 @@
 .Main-Div{
-        
-   width: 100%;
     padding-top: 50px;
     padding-bottom: 10px;
-    height: 2800px;
-
-    
-    
-    
-        background-color: rgba(245, 244, 250, 0.938);
-        
-        
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .sec-Div{
     margin-top: 30px;
 }
 
-
+.secondary-title {
+  text-align: center;
+  color: #6A6C75
+}
 
 .card-body{
   text-align:center;
-    background-color:#281931;
-    
     color:#ffffff;
     height: 10px;
     width: 100%;
@@ -48,7 +41,6 @@
   }
   
   .carousel .slide {
-    background: #281931 !important;
     color: black;
     height: 100%;
   }
@@ -100,7 +92,6 @@
   .myCarousel p {
     font-weight: 100 !important;
     line-height: 29px !important;
-    color: #222;
     font-size: 15px;
     font-family: sans-serif;
     max-height: 67px;
@@ -130,7 +121,7 @@
   }
   
   .carousel.carousel-slider .control-arrow {
-    background: rgb(218, 201, 238) !important;
+    background: #07222e80;
     height: 50px !important;
     position: absolute;
     top: 35% !important;
