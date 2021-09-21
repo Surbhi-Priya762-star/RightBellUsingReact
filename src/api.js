@@ -29,7 +29,6 @@ export const registerUser = (data = {}) => ApiClient.exec({
     },
 });
 
-
 export const login = (data = {}) => ApiClient.exec({
     method: 'POST',
     url: '/auth/login',
@@ -44,7 +43,6 @@ export const login = (data = {}) => ApiClient.exec({
         return false;
     },
 });
-
 
 export const getUserInfo = (userId) => ApiClient.exec({
     method: 'GET',

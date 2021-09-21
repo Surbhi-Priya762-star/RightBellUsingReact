@@ -113,7 +113,7 @@ export default function FullWidthGrid() {
       Object.keys(response).length !== 0
     ) {
       // call the api
-
+      
       const res = await registerUser(response);
       setshowModal(true);
       console.log(res);

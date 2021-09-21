@@ -25,6 +25,7 @@ import Postjob from "./My Components/ServiceProviderProfileupdation/BasicDetails
 import { ToastContainer } from "react-toastify";
 import Profile from "./My Components/ServiceUserProfileUpdation/profile";
 import AdminProfile from "./My Components/ServiceProviderProfileupdation/adminProfile";
+import StepperUserDetail from "./pages/StepperUserDetail";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -34,7 +35,7 @@ ReactDOM.render(
         <Route path="/ServiceUser" component={ServiceUser} />
         <Route path="/ServiceProvider" component={ServiceProvider} />
         <Route path="/Login" component={Login} />
-
+        <Route path="/startDetails" component={StepperUserDetail} />
         <Route path="/profile/:id" component={Profile} />
         <Route path="/MenuBar" component={MenuBar} />
         <Route path="/Education" component={Education} />
