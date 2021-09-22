@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import App from './App';
 import ServiceUser from './My Components/SignUp/ServiceUser';
 import ServiceProvider from './My Components/SignUp/ServiceProvider';
@@ -33,10 +33,9 @@ import AdminProfile from './My Components/ServiceProviderProfileupdation/adminPr
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-
       <Switch>
-
         <Route exact path="/" component={App} />
+
         <Route path="/ServiceUser" component={ServiceUser} />
         <Route path="/ServiceProvider" component={ServiceProvider} />
         <Route path="/Login" component={Login} />
