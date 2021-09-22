@@ -40,6 +40,7 @@ function Accomplishment() {
     e.preventDefault();
     setCurrentPage((previousData) => previousData);
     console.log(addAccompCount);
+    history.push("/")
     // setaddAccompCount(finalData);
 
     // const accomplishment = addAccompCount;
