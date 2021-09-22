@@ -26,36 +26,42 @@ import { ToastContainer } from "react-toastify";
 import Profile from "./My Components/ServiceUserProfileUpdation/profile";
 import AdminProfile from "./My Components/ServiceProviderProfileupdation/adminProfile";
 import StepperUserDetail from "./pages/StepperUserDetail";
+import { StepperNextProvider } from "./utils/stepperNextContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/ServiceUser" component={ServiceUser} />
-        <Route path="/ServiceProvider" component={ServiceProvider} />
-        <Route path="/Login" component={Login} />
-        <Route path="/startDetails" component={StepperUserDetail} />
-        <Route path="/profile/:id" component={Profile} />
-        <Route path="/MenuBar" component={MenuBar} />
-        <Route path="/Education" component={Education} />
-        <Route path="/Employment" component={Employment} />
-        <Route path="/DesiredRole" component={DesiredRole} />
-        <Route path="/Accomplishment" component={Accomplishment} />
-        <Route path="/Project" component={Project} />
-        <Route path="/Assessment" component={Assessment} />
-        <Route path="/BasicDetails" component={Basic} />
-        <Route path="/KeySkills" component={KeySkills} />
+    <StepperNextProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/ServiceUser" component={ServiceUser} />
+          <Route path="/ServiceProvider" component={ServiceProvider} />
+          <Route path="/Login" component={Login} />
+          <Route path="/startDetails" component={StepperUserDetail} />
+          <Route path="/profile/:id" component={Profile} />
+          <Route path="/MenuBar" component={MenuBar} />
+          <Route path="/Education" component={Education} />
+          <Route path="/Employment" component={Employment} />
+          <Route path="/DesiredRole" component={DesiredRole} />
+          <Route path="/Accomplishment" component={Accomplishment} />
+          <Route path="/Project" component={Project} />
+          <Route path="/Assessment" component={Assessment} />
+          <Route path="/BasicDetails" component={Basic} />
+          <Route path="/KeySkills" component={KeySkills} />
 
-        <Route path="/adminProfile/:id" component={AdminProfile} />
-        <Route path="/BasicServiceProvider" component={BasicServiceProvider} />
-        <Route
-          path="/AssessmentServiceProvider"
-          component={AssessmentServiceProvider}
-        />
-        <Route path="/Postjob" component={Postjob} />
-      </Switch>
-    </Router>
+          <Route path="/adminProfile/:id" component={AdminProfile} />
+          <Route
+            path="/BasicServiceProvider"
+            component={BasicServiceProvider}
+          />
+          <Route
+            path="/AssessmentServiceProvider"
+            component={AssessmentServiceProvider}
+          />
+          <Route path="/Postjob" component={Postjob} />
+        </Switch>
+      </Router>
+    </StepperNextProvider>
     <ToastContainer />
   </React.StrictMode>,
   document.getElementById("root")

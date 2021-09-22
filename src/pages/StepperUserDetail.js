@@ -1,20 +1,27 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import BasicDetail from "../My Components/StepperComponents/BasicDetail";
 import Education from "../My Components/StepperComponents/Education";
 import Employment from "../My Components/StepperComponents/Employement";
 import Accoumplishment from "../My Components/StepperComponents/Accoumplishment";
+import { stepperStyle } from "../styles/stepperStyle";
+import { stepperNextContext } from "../utils/stepperNextContext";
 
-const steps = ["Basic", "Education", "Employement", "Accomplishment"];
+const steps = ["Education", "Employement", "Accomplishment"];
 
 export default function HorizontalLinearStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const {
+    currentPage,
+    setCurrentPage,
+    setActiveStep,
+    activeStep,
+    skipped,
+    setSkipped,
+  } = useContext(stepperNextContext);
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -25,6 +32,7 @@ export default function HorizontalLinearStepper() {
   };
 
   const handleNext = () => {
+    setCurrentPage((previousData) => previousData + 1);
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -36,6 +44,7 @@ export default function HorizontalLinearStepper() {
   };
 
   const handleBack = () => {
+    setCurrentPage((previousData) => previousData + 1);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -59,21 +68,39 @@ export default function HorizontalLinearStepper() {
   };
 
   return (
-    <Box sx={{ width: "100%", padding: "25px" }}>
-      <Stepper activeStep={activeStep} style={{boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px', padding: '35px', borderRadius: '6px'}}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+    <>
+      <nav style={{ ...stepperStyle.navbar }}>
+        <img
+          style={{ flex: 1 }}
+          src={"/Images/logo.png"}
+          width="200"
+          height="150"
+          className="d-inline-block align-top"
+          alt="Right Bell logo"
+        />
+        <div style={{ flex: 5, alignSelf: "center", background: "white" }}>
+          <Stepper
+            activeStep={activeStep}
+            style={{
+              padding: "35px",
+              borderRadius: "6px",
+            }}
+          >
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = {};
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel {...labelProps}>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+        </div>
+      </nav>
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
@@ -86,13 +113,11 @@ export default function HorizontalLinearStepper() {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          {activeStep === 0 ? (
-            <BasicDetail />
-          ) : activeStep === 1 ? (
+          {currentPage === 0 ? (
             <Education />
-          ) : activeStep === 2 ? (
+          ) : currentPage === 1 ? (
             <Employment />
-          ) : activeStep === 3 ? (
+          ) : currentPage === 2 ? (
             <Accoumplishment />
           ) : null}
 
@@ -106,12 +131,15 @@ export default function HorizontalLinearStepper() {
               Back
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleNext}>
+            <Button
+              onClick={handleNext}
+              style={{ padding: "10px", width: "100px" }}
+            >
               {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </Box>
         </React.Fragment>
       )}
-    </Box>
+    </>
   );
 }

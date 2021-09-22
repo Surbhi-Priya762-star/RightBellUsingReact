@@ -33,6 +33,8 @@ function BasicDetail({ userInfo }) {
         padding: "45px",
         borderRadius: "6px",
         margin: "63px auto 160px auto",
+        marginTop: '173px',
+        marginBottom: "5px",
       }}
       onSubmit={handleSubmit}
     >

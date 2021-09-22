@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { RootContainer } from "../../styles/RootContainer";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,8 +14,17 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { useHistory } from "react-router-dom";
 import { manageUserInfo } from "../../api";
+import { stepperNextContext } from "../../utils/stepperNextContext";
 
 function Education({ userInfo }) {
+  const {
+    currentPage,
+    setCurrentPage,
+    setActiveStep,
+    activeStep,
+    skipped,
+    setSkipped,
+  } = useContext(stepperNextContext);
   const [addEducationCount, setAddEducationCount] = useState([
     {
       schoolName: "",
@@ -26,12 +35,10 @@ function Education({ userInfo }) {
       university: "",
       percentage: 0,
       courseType: "",
-    }
+    },
   ]);
   const [btnDisable, setBtnDisable] = useState(false);
   const history = useHistory();
-
-
 
   const addEducation = () => {
     if (addEducationCount.length < 5) {
@@ -53,8 +60,25 @@ function Education({ userInfo }) {
     }
   };
 
+  const isStepSkipped = (step) => {
+    return skipped.has(step);
+  };
+
+  const handleNext = () => {
+    let newSkipped = skipped;
+    if (isStepSkipped(activeStep)) {
+      newSkipped = new Set(newSkipped.values());
+      newSkipped.delete(activeStep);
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped(newSkipped);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setCurrentPage((previousData) => previousData + 1);
+    handleNext();
     console.log(addEducationCount);
     // if (present == '') {
     //   alert('Please select prese type!!!');
@@ -81,16 +105,18 @@ function Education({ userInfo }) {
 
   return (
     <form
-    style={{
+      style={{
         boxShadow:
-        "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
-      width: "60%",
-      height: "auto",
-      padding: "45px",
-      borderRadius: "6px",
-      margin:'63px auto 160px auto'
-    }}
-    onSubmit={handleSubmit}
+          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+        width: "60%",
+        height: "auto",
+        padding: "45px",
+        borderRadius: "6px",
+        margin: "63px auto 160px auto",
+        marginTop: "173px",
+        marginBottom: "5px",
+      }}
+      onSubmit={handleSubmit}
     >
       <div style={{ marginBottom: "30px" }}>
         <h2>Educations Details</h2>
@@ -112,14 +138,13 @@ function Education({ userInfo }) {
               label="School/College"
               name="schoolName"
               value={addEducationCount[index].schoolName}
-              onChange={
-               (e) =>
-                      handleChangeFunc(
-                        "schoolName",
-                        e.target.value,
-                        index,
-                        addEducationCount
-                      )
+              onChange={(e) =>
+                handleChangeFunc(
+                  "schoolName",
+                  e.target.value,
+                  index,
+                  addEducationCount
+                )
               }
               aria-describedby="component-helper-text"
             />
@@ -130,14 +155,13 @@ function Education({ userInfo }) {
               type="date"
               name="yearOfComplition"
               value={addEducationCount[index].yearOfComplition}
-              onChange={
-                (e) =>
-                      handleChangeFunc(
-                        "yearOfComplition",
-                        e.target.value,
-                        index,
-                        addEducationCount
-                      )
+              onChange={(e) =>
+                handleChangeFunc(
+                  "yearOfComplition",
+                  e.target.value,
+                  index,
+                  addEducationCount
+                )
               }
               aria-describedby="component-helper-text"
             />
@@ -148,14 +172,13 @@ function Education({ userInfo }) {
                 <Checkbox
                   name="recentEducation"
                   checked={addEducationCount[index].recentEducation}
-                  onChange={
-                    (e) =>
-                          handleChangeFunc(
-                            "recentEducation",
-                            e.target.value,
-                            index,
-                            addEducationCount
-                          )
+                  onChange={(e) =>
+                    handleChangeFunc(
+                      "recentEducation",
+                      e.target.value,
+                      index,
+                      addEducationCount
+                    )
                   }
                   value="allowExtraEmails"
                   color="primary"
@@ -179,14 +202,13 @@ function Education({ userInfo }) {
               label="Degree/Highest Qualification"
               name="degree"
               value={addEducationCount[index].degree}
-              onChange={
-               (e) =>
-                      handleChangeFunc(
-                        "degree",
-                        e.target.value,
-                        index,
-                        addEducationCount
-                      )
+              onChange={(e) =>
+                handleChangeFunc(
+                  "degree",
+                  e.target.value,
+                  index,
+                  addEducationCount
+                )
               }
               aria-describedby="component-helper-text"
             />
@@ -196,14 +218,13 @@ function Education({ userInfo }) {
               label="Specialization"
               name="specialization"
               value={addEducationCount[index].specialization}
-              onChange={
-               (e) =>
-                      handleChangeFunc(
-                        "specialization",
-                        e.target.value,
-                        index,
-                        addEducationCount
-                      )
+              onChange={(e) =>
+                handleChangeFunc(
+                  "specialization",
+                  e.target.value,
+                  index,
+                  addEducationCount
+                )
               }
               aria-describedby="component-helper-text"
             />
@@ -222,14 +243,13 @@ function Education({ userInfo }) {
               label="University/Board"
               name="university"
               value={addEducationCount[index].university}
-              onChange={
-                 (e) =>
-                      handleChangeFunc(
-                        "university",
-                        e.target.value,
-                        index,
-                        addEducationCount
-                      )
+              onChange={(e) =>
+                handleChangeFunc(
+                  "university",
+                  e.target.value,
+                  index,
+                  addEducationCount
+                )
               }
               aria-describedby="component-helper-text"
             />
@@ -240,14 +260,13 @@ function Education({ userInfo }) {
               type="number"
               name="percentage"
               value={addEducationCount[index].percentage}
-              onChange={
-                (e) =>
-                      handleChangeFunc(
-                        "percentage",
-                        e.target.value,
-                        index,
-                        addEducationCount
-                      )
+              onChange={(e) =>
+                handleChangeFunc(
+                  "percentage",
+                  e.target.value,
+                  index,
+                  addEducationCount
+                )
               }
               aria-describedby="component-helper-text"
             />
@@ -264,14 +283,13 @@ function Education({ userInfo }) {
                 aria-label="Course Type"
                 name="courseType"
                 value={addEducationCount[index].courseType}
-                onChange={
-                  (e) =>
-                        handleChangeFunc(
-                          "courseType",
-                          e.target.value,
-                          index,
-                          addEducationCount
-                        )
+                onChange={(e) =>
+                  handleChangeFunc(
+                    "courseType",
+                    e.target.value,
+                    index,
+                    addEducationCount
+                  )
                 }
               >
                 <FormControlLabel
@@ -322,13 +340,11 @@ function Education({ userInfo }) {
           variant="contained"
           color="primary"
         >
-          Save
+          Next
         </Button>
-       
       </div>
     </form>
   );
 }
 
 export default Education;
-

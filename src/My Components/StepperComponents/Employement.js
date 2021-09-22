@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import { manageUserInfo } from "../../api";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { add } from "lodash";
+import { stepperNextContext } from "../../utils/stepperNextContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +33,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Employment({ userInfo }) {
+  const {
+    currentPage,
+    setCurrentPage,
+    setActiveStep,
+    activeStep,
+    skipped,
+    setSkipped,
+  } = useContext(stepperNextContext);
   const [addEducationCount, setAddEducationCount] = useState([
     {
       position: "",
@@ -59,7 +68,7 @@ function Employment({ userInfo }) {
   });
 
   const [btnDisable, setBtnDisable] = useState(false);
-  
+
   const classes = useStyles();
   // const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
   const history = useHistory();
@@ -69,10 +78,26 @@ function Employment({ userInfo }) {
     // console.log(...addEducationCount[addEducationCount.length])
   }, [addEducationCount, singleEmp]);
 
+  const isStepSkipped = (step) => {
+    return skipped.has(step);
+  };
+
+  const handleNext = () => {
+    let newSkipped = skipped;
+    if (isStepSkipped(activeStep)) {
+      newSkipped = new Set(newSkipped.values());
+      newSkipped.delete(activeStep);
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped(newSkipped);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(addEducationCount)
+    setCurrentPage((previousData) => previousData + 1);
+    handleNext();
+    console.log(addEducationCount);
     // setAddEducationCount(finalData)
     // console.log("<><><><> ", e.target)
 
@@ -114,6 +139,8 @@ function Employment({ userInfo }) {
         padding: "45px",
         borderRadius: "6px",
         margin: "63px auto 160px auto",
+        marginTop: "173px",
+        marginBottom: "5px",
       }}
       onSubmit={handleSubmit}
     >
@@ -369,7 +396,7 @@ function Employment({ userInfo }) {
           variant="contained"
           color="primary"
         >
-          Save
+          Next
         </Button>
       </div>
     </form>

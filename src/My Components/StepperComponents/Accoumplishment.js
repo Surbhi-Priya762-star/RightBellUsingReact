@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-lone-blocks */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TextField } from "@material-ui/core";
 import { RootContainer } from "../../styles/RootContainer";
 import { EmployementStyle } from "../../styles/EmployementStyle";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
+import { stepperNextContext } from "../../utils/stepperNextContext";
 
 function Accomplishment() {
+  const { currentPage, setCurrentPage } = useContext(stepperNextContext);
   const userInfo = JSON.parse(localStorage.getItem("friday-user-info"));
   const history = useHistory();
   const [finalData, setfinalData] = useState(null);
@@ -29,14 +31,15 @@ function Accomplishment() {
   });
   const [btnDisable, setBtnDisable] = useState(false);
 
-//   useEffect(() => {
-//     const refinedEmp = addAccompCount.filter((d) => d.position !== "");
-//     setfinalData(refinedEmp);
-//   }, [addAccompCount]);
+  //   useEffect(() => {
+  //     const refinedEmp = addAccompCount.filter((d) => d.position !== "");
+  //     setfinalData(refinedEmp);
+  //   }, [addAccompCount]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(addAccompCount)
+    setCurrentPage((previousData) => previousData);
+    console.log(addAccompCount);
     // setaddAccompCount(finalData);
 
     // const accomplishment = addAccompCount;
@@ -67,6 +70,8 @@ function Accomplishment() {
         padding: "45px",
         borderRadius: "6px",
         margin: "63px auto 160px auto",
+        marginTop: "173px",
+        marginBottom: "5px",
       }}
       onSubmit={handleSubmit}
     >
@@ -197,7 +202,7 @@ function Accomplishment() {
           variant="contained"
           color="primary"
         >
-          Save
+          Next
         </Button>
       </div>
     </form>
