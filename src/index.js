@@ -29,6 +29,7 @@ import AssessmentServiceProvider from "./My Components/ServiceProviderProfileupd
 import Postjob from "./My Components/ServiceProviderProfileupdation/BasicDetails/Postjob";
 import { ToastContainer } from "react-toastify";
 import Profile from "./My Components/ServiceUserProfileUpdation/profile";
+import StepperUserDetail from "./pages/StepperUserDetail";
 import AdminProfile from "./My Components/ServiceProviderProfileupdation/adminProfile";
 import { StepperNextProvider } from "./utils/stepperNextContext";
 
@@ -53,6 +54,7 @@ ReactDOM.render(
           <Route path="/Assessment" component={Assessment} />
           <Route path="/BasicDetails" component={Basic} />
           <Route path="/KeySkills" component={KeySkills} />
+          <Route path="/startDetails" component={StepperUserDetail} />
 
           <Route path="/adminProfile/:id" component={AdminProfile} />
           <Route

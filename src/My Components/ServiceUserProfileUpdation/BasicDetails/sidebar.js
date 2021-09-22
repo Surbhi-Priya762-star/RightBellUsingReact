@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { useState } from "react";
 import List from "@material-ui/core/List";
+import { makeStyles } from "@material-ui/core/styles";
+
 import Divider from "@material-ui/core/Divider";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
