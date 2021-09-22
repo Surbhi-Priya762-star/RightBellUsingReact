@@ -5,7 +5,6 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import { useSpring, animated } from "react-spring"; // web.cjs is required for IE 11 support
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -57,8 +56,8 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal({ setOpenModel, openModel }) {
-  const history = useHistory();
+export default function SpringModal(props) {
+  const { setOpenModel, openModel } = props
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -99,7 +98,7 @@ export default function SpringModal({ setOpenModel, openModel }) {
               variant="contained"
               color="primary"
               onClick={() => {
-                history.push("/Login");
+                props.history.push("/Login");
               }}
             >
               Go to Login

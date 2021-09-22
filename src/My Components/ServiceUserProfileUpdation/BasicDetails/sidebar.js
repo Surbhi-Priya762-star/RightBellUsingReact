@@ -26,7 +26,6 @@ import "./MenuBar.css";
 import mainLogo from "../../../assest/logo.png";
 import { generateResume } from "../../../api";
 import { logoutAPI } from "../../../api";
-import { useHistory } from "react-router-dom";
 import { sidebarStyle } from "../../../styles/sidebar";
 
 const drawerWidth = 240;
@@ -57,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SideBar({ changeSlide }) {
-  const history = useHistory();
+export default function SideBar(props) {
+  const { changeSlide } = props
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("friday-user-info"))
@@ -229,7 +228,7 @@ export default function SideBar({ changeSlide }) {
           <Button
             onClick={() => {
               logoutAPI().then(() => {
-                history.push("/Login");
+                props.history.push("/Login");
               });
             }}
             style={{...sidebarStyle.btnStyle, background: "#576574"}}
