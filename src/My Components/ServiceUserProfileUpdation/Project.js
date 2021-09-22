@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Project() {
   const classes = useStyles();
-  const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
   const defaultProject = userInfo.project[0] || {};
   const history = useHistory();
 

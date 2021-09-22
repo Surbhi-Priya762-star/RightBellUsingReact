@@ -60,7 +60,7 @@ export default function SideBar(props) {
   const { changeSlide } = props
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState(
-    JSON.parse(localStorage.getItem("friday-user-info"))
+    JSON.parse(localStorage.getItem("user-info"))
   );
 
   return (

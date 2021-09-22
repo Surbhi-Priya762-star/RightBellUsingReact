@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Basic() {
   const classes = useStyles();
-  const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
   const history = useHistory();
 
   useEffect(() => {

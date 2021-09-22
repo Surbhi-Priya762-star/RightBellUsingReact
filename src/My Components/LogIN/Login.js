@@ -20,7 +20,7 @@ const Login = (props) => {
   const [pass, setPass] = useState(null);
   
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("friday-user-info"));
+    const userInfo = JSON.parse(localStorage.getItem("user-info"));
     if (userInfo !== null) {
       if (userInfo.role == "user") props.history.push(`/profile/${userInfo.id}`);
       else props.history.push(`/adminProfile/${userInfo.id}`);
@@ -47,6 +47,7 @@ const Login = (props) => {
 
     //call api
     const res = await login(request);
+    console.log('RES', res)
     if (res) {
       console.log(res);
       props.history.push(`/`);

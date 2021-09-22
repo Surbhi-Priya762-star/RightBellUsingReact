@@ -44,7 +44,7 @@ export default function FullWidthGrid(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+    const userInfo = JSON.parse(localStorage.getItem('user-info'));
     if (userInfo !== null) {
       if (userInfo.role == 'user')
         props.history.push(`/profile/${userInfo.id}`);

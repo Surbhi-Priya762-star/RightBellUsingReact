@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Accomplishment() {
   const classes = useStyles();
-  const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
   const defaultAccomplishment = userInfo.accomplishment[0] || {};
   const history = useHistory();
   const [edit, setEdit] = useState(false);
