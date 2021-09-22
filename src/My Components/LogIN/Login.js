@@ -43,7 +43,7 @@ const Login = (props) => {
     console.log("RES", res);
     if (res) {
       console.log(res);
-      props.history.push(`/`);
+      props.history.push(`/startDetails`);
     }
   };
 
