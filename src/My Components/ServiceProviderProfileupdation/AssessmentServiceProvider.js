@@ -15,7 +15,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import SaveIcon from '@material-ui/icons/Save';
-import { useHistory } from 'react-router-dom';
 import { manageUserInfo } from '../../api';
 
 
@@ -84,15 +83,14 @@ function getStyles(name, personName, theme) {
 }
 
 
-function Assessment() {
-  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('friday-user-info')));
+function Assessment(props) {
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('user-info')));
 
   const classes = useStyles();
-  const history = useHistory();
 
   useEffect(() => {
     if (userInfo == null) {
-      history.push(`/`);
+      props.history.push(`/`);
     }
   }, []);
 

@@ -85,7 +85,7 @@ function getStyles(name, personName, theme) {
 function Postjob() {
   const history = useHistory();
 
-  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('friday-user-info')));
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('user-info')));
   useEffect(() => {
     if (userInfo == null) {
       history.push(`/`);

@@ -15,13 +15,41 @@ import Button from "@material-ui/core/Button";
 import "./MenuBar.css";
 import { generateResume } from "../../../api";
 import { logoutAPI } from "../../../api";
-import { useHistory } from "react-router-dom";
 import { sidebarStyle } from "../../../styles/sidebar";
 
-export default function SideBar({ changeSlide }) {
-  const history = useHistory();
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    height: "150px",
+    backgroundColor: "#231c2b",
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+  },
+}));
+
+export default function SideBar(props) {
+  const { changeSlide } = props;
+  const classes = useStyles();
   const [userInfo, setUserInfo] = useState(
-    JSON.parse(localStorage.getItem("friday-user-info"))
+    JSON.parse(localStorage.getItem("user-info"))
   );
 
   return (
@@ -184,7 +212,7 @@ export default function SideBar({ changeSlide }) {
           <Button
             onClick={() => {
               logoutAPI().then(() => {
-                history.push("/Login");
+                props.history.push("/Login");
               });
             }}
             style={{

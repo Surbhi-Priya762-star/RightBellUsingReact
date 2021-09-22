@@ -3,7 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import App from "./App";
 import ServiceUser from "./My Components/SignUp/ServiceUser";
 import ServiceProvider from "./My Components/SignUp/ServiceProvider";
@@ -25,7 +30,6 @@ import Postjob from "./My Components/ServiceProviderProfileupdation/BasicDetails
 import { ToastContainer } from "react-toastify";
 import Profile from "./My Components/ServiceUserProfileUpdation/profile";
 import AdminProfile from "./My Components/ServiceProviderProfileupdation/adminProfile";
-import StepperUserDetail from "./pages/StepperUserDetail";
 import { StepperNextProvider } from "./utils/stepperNextContext";
 
 ReactDOM.render(
@@ -34,10 +38,11 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/" component={App} />
+
           <Route path="/ServiceUser" component={ServiceUser} />
           <Route path="/ServiceProvider" component={ServiceProvider} />
           <Route path="/Login" component={Login} />
-          <Route path="/startDetails" component={StepperUserDetail} />
+
           <Route path="/profile/:id" component={Profile} />
           <Route path="/MenuBar" component={MenuBar} />
           <Route path="/Education" component={Education} />

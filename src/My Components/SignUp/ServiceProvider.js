@@ -13,10 +13,6 @@ import Footer from '../Footer/Footer';
 import './ServiceUser.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { registerUser } from '../../api';
-import { useHistory } from 'react-router-dom';
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,17 +40,16 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function FullWidthGrid() {
+export default function FullWidthGrid(props) {
   const classes = useStyles();
-  const history = useHistory();
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+    const userInfo = JSON.parse(localStorage.getItem('user-info'));
     if (userInfo !== null) {
       if (userInfo.role == 'user')
-        history.push(`/profile/${userInfo.id}`);
+        props.history.push(`/profile/${userInfo.id}`);
       else
-        history.push(`/adminProfile/${userInfo.id}`);
+        props.history.push(`/adminProfile/${userInfo.id}`);
 
     }
   }, []);

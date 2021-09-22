@@ -1,114 +1,115 @@
 import { toast } from 'react-toastify';
 
-import ApiClient from './api_client';
+import apiClient from './api_client';
 import { saveAs } from 'file-saver';
 import axios from 'axios';
 
 const loginHelper = (tokens, user) => {
-    localStorage.setItem('friday-session-token', tokens.access.token);
-    localStorage.setItem('friday-refresh-token', tokens.refresh.token);
-
+    localStorage.setItem('token', tokens.access.token);
+    localStorage.setItem('refresh-token', tokens.refresh.token);
     window.jwt = tokens.access.token;
-    console.log(tokens);
-    localStorage.setItem('friday-user-info', JSON.stringify(user));
+    localStorage.setItem('user-info', JSON.stringify(user));
 }
 
-export const registerUser = (data = {}) => ApiClient.exec({
-    method: 'POST',
-    url: '/auth/register',
-    data,
-    onSuccess: (data) => {
-        loginHelper(data.tokens, data.user);
-        // window.location.href = '/';
-        return data;
-    },
-    onFailure: ({ message }) => {
-        console.log(message);
-        alert(message);
-        return false;
-    },
-});
-
-export const login = (data = {}) => ApiClient.exec({
-    method: 'POST',
-    url: '/auth/login',
-    data,
-    onSuccess: ({ tokens, user }) => {
-        loginHelper(tokens, user);
-        return user;
-    },
-    onFailure: ({ message }) => {
-        console.log(message);
-        alert(message);
-        return false;
-    },
-});
-
-export const getUserInfo = (userId) => ApiClient.exec({
-    method: 'GET',
-    url: `/users/${userId}`,
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    onSuccess: (data) => {
-        return data;
-    },
-    onFailure: ({ message }) => {
-        console.log(message);
-        alert(message);
-        return false;
-    },
-});
+export const registerUser = async (data = {}) => {
+    try {
+        let config = {
+            method: 'post',
+            url: '/v1/auth/register',
+            data
+        };
+        const res = await apiClient(config, 'LOGIN')
+        const { tokens, user } = res.data
+        loginHelper(tokens, user)
+        return user
+    } catch (error) {
+        if (!axios.isCancel(error)) {
+            console.log(error.message);
+            alert(error.message);
+            return false;
+        }
+    }
+}
 
 
-export const manageUserInfo = (userId, data) => ApiClient.exec({
-    method: 'PATCH',
-    url: `/users/${userId}`,
-    data,
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    onSuccess: (data) => {
-        localStorage.setItem('friday-user-info', JSON.stringify(data));
+export const login = async (data = {}) => {
+    try {
+        let config = {
+            method: 'post',
+            url: '/v1/auth/login',
+            data
+        };
+        const res = await apiClient(config, 'LOGIN')
+        const { tokens, user } = res.data
+        loginHelper(tokens, user)
+        return user
+    } catch (error) {
+        if (!axios.isCancel(error)) {
+            console.log(error.message);
+            alert(error.message);
+            return false;
+        }
+    }
+}
 
-        return data;
-    },
-    onFailure: ({ message }) => {
-        console.log(message);
-        alert(message);
-        return false;
-    },
-});
+export const getUserInfo = async (userId) => {
+    try {
+        let config = {
+            method: 'get',
+            url: `/v1/users/${userId}`
+        };
+        const res = await apiClient(config, 'USER_INFO')
+        return res.data
+    } catch (error) {
+        if (!axios.isCancel(error)) {
+            return false;
+        }
+    }
+}
 
+export const manageUserInfo = async (userId, data) => {
+    try {
+        let config = {
+            method: 'patch',
+            url: `/v1/users/${userId}`,
+        };
+        const res = await apiClient(config, 'UPDATE_USER_INFO')
+        localStorage.setItem('user-info', JSON.stringify(res.data));
+        return res.data
+    } catch (error) {
+        if (!axios.isCancel(error)) {
+            return false;
+        }
+    }
+}
 
-
-
-
-export const logoutAPI = () => ApiClient.exec({
-    method: 'POST',
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: '/auth/logout',
-    data: {
-        refreshToken: localStorage.getItem('friday-refresh-token'),
-    },
-    onSuccess: (s) => {
-        console.log(s);
-        localStorage.removeItem('friday-session-token');
-        localStorage.removeItem('friday-refresh-token');
-
+export const logoutAPI = async () => {
+    try {
+        let config = {
+            method: 'post',
+            url: '/v1/auth/logout',
+            data: {
+                refreshToken: localStorage.getItem('refresh-token'),
+            }
+        };
+        await apiClient(config, 'LOGOUT_USER_INFO')
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh-token');
         window.jwt = null;
-        localStorage.removeItem('friday-user-info');
+        localStorage.removeItem('user-info');
         window.location.href = '/';
-        return true;
-    },
-    onFailure: ({ message }) => {
-        console.log(message);
-        alert(message);
-        return false;
-    },
-});
+        return true
+    } catch (error) {
+        if (!axios.isCancel(error)) {
+            return false;
+        }
+    }
+}
 
-
-export const sendVerificationEmail = () => ApiClient.exec({
+export const sendVerificationEmail = () => apiClient.exec({
     method: 'POST',
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: '/auth/send-verification-email',
+    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}` },
+    url: '/v1/auth/send-verification-email',
     onSuccess: (s) => {
         console.log(s);
         toast.success('Email sent successfully !');
@@ -123,11 +124,10 @@ export const sendVerificationEmail = () => ApiClient.exec({
     },
 });
 
-
-export const verifyEmailAPI = (token) => ApiClient.exec({
+export const verifyEmailAPI = (token) => apiClient.exec({
     method: 'POST',
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: `/auth/verify-email?token=${token}`,
+    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}` },
+    url: `/v1/auth/verify-email?token=${token}`,
     onSuccess: (s) => {
         console.log(s);
         toast.success('Token Validated Successfully');
@@ -140,10 +140,10 @@ export const verifyEmailAPI = (token) => ApiClient.exec({
     },
 });
 
-export const sendVerificationOTP = () => ApiClient.exec({
+export const sendVerificationOTP = () => apiClient.exec({
     method: 'POST',
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: '/auth/send-verification-otp',
+    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}` },
+    url: '/v1/auth/send-verification-otp',
     onSuccess: (s) => {
         console.log(s);
         toast.success('OTP sent successfully !');
@@ -158,10 +158,10 @@ export const sendVerificationOTP = () => ApiClient.exec({
 });
 
 
-export const verifyOtpAPI = (otp) => ApiClient.exec({
+export const verifyOtpAPI = (otp) => apiClient.exec({
     method: 'POST',
-    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: `/auth/verify-mobile?otp=${otp}`,
+    headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}` },
+    url: `/v1/auth/verify-mobile?otp=${otp}`,
     onSuccess: (s) => {
         console.log(s);
         toast.success('Token Validated Successfully');
@@ -175,7 +175,7 @@ export const verifyOtpAPI = (otp) => ApiClient.exec({
 });
 
 export const generateResume = (userId, data) => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}`;
     axios.post(`http://ec2-3-108-251-176.ap-south-1.compute.amazonaws.com:3000/v1/users/resume/${userId}`, data)
         .then(() => {
             setTimeout(() => {
@@ -192,12 +192,10 @@ export const generateResume = (userId, data) => {
 };
 
 
-
-
-export const sendForgotPassEmail = (email) => ApiClient.exec({
+export const sendForgotPassEmail = (email) => apiClient.exec({
     method: 'POST',
-    // headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: '/auth/forgot-password',
+    // headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}` },
+    url: '/v1/auth/forgot-password',
     data: {
         email: email
     },
@@ -216,10 +214,10 @@ export const sendForgotPassEmail = (email) => ApiClient.exec({
 });
 
 
-export const resetPassToken = (token, pass) => ApiClient.exec({
+export const resetPassToken = (token, pass) => apiClient.exec({
     method: 'POST',
-    // headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('friday-session-token')}` },
-    url: `/auth/reset-password?token=${token}`,
+    // headers: { Authorization: `Bearer ${window.jwt ? window.jwt : localStorage.getItem('token')}` },
+    url: `/v1/auth/reset-password?token=${token}`,
     data: {
         password: pass
     },

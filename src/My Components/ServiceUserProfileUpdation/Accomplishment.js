@@ -9,7 +9,8 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 
 function Accomplishment() {
-  const userInfo = JSON.parse(localStorage.getItem("friday-user-info"));
+  const classes = useStyles();
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
   const defaultAccomplishment = userInfo.accomplishment[0] || {};
   const history = useHistory();
   const [edit, setEdit] = useState(false);

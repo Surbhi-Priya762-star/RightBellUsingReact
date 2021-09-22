@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Profile() {
   const [userInfo, setUserInfo] = useState(
-    JSON.parse(localStorage.getItem("friday-user-info"))
+    JSON.parse(localStorage.getItem("user-info"))
   );
 
   const [normalised, setNormalised] = useState(0);
