@@ -14,38 +14,36 @@ import RrightBellModal from "../MainBodyContent/model";
 import "./ServiceUser.css";
 import { ToastContainer, toast } from "react-toastify";
 import { registerUser } from "../../api";
-import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    width: "50%",
-  },
-}));
 
-export default function FullWidthGrid() {
+export default (props)  => {
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+    form: {
+      width: "100%", // Fix IE 11 issue.
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+      width: "50%",
+    },
+  }));  
   const classes = useStyles();
-  const history = useHistory();
 
   const [showModal, setshowModal] = useState(false);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("friday-user-info"));
     if (userInfo !== null) {
-      if (userInfo.role === "user") history.push(`/profile/${userInfo.id}`);
-      else history.push(`/adminProfile/${userInfo.id}`);
+      if (userInfo.role === "user") props.history.push(`/profile/${userInfo.id}`);
+      else props.history.push(`/adminProfile/${userInfo.id}`);
     }
   }, []);
 
