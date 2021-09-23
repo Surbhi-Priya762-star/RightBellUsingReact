@@ -1,9 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from "axios";
 
-axios.defaults.headers.common["Authorization"] = JSON.parse(
-  localStorage.getItem("token")
-);
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
 
 const url = "http://api.rightbell.in";
 

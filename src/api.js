@@ -31,6 +31,27 @@ export const registerUser = async (data = {}) => {
   }
 };
 
+export const EmployementApi = async (data = {}) => {
+  try {
+    let config = {
+      method: "post",
+      url: "/v2/education",
+      data,
+    };
+    const res = await apiClient(config, "Education");
+    // const { tokens, user } = res.data;
+    // loginHelper(tokens, user);
+    console.log("apoi 's res ====> ", res)
+    return res;
+  } catch (error) {
+    if (!axios.isCancel(error)) {
+      console.log(error.message);
+      alert(error.message);
+      return false;
+    }
+  }
+};
+
 export const login = async (data = {}) => {
   try {
     let config = {
@@ -50,6 +71,8 @@ export const login = async (data = {}) => {
     }
   }
 };
+
+
 
 export const getUserInfo = async (userId) => {
   try {

@@ -7,7 +7,6 @@ import "../SignUp/ServiceUser.css";
 import { login, resetPassToken, sendForgotPassEmail } from "../../api";
 
 const Login = (props) => {
-  console.log("PPP", props);
   const [email, setEmail] = useState(null);
   const [pass, setPass] = useState(null);
 

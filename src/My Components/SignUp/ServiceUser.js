@@ -1,5 +1,12 @@
 /* eslint-disable eqeqeq */
 import React, { useState, useEffect } from "react";
+import {
+  Row,
+  Col,
+  InputGroup,
+  FormControl,
+  Button
+} from 'react-bootstrap'
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +14,6 @@ import { TextField } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -17,7 +23,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { registerUser } from "../../api";
 
 
-export default (props)  => {
+export default (props) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -35,7 +41,7 @@ export default (props)  => {
       margin: theme.spacing(3, 0, 2),
       width: "50%",
     },
-  }));  
+  }));
   const classes = useStyles();
 
   const [showModal, setshowModal] = useState(false);
@@ -112,175 +118,103 @@ export default (props)  => {
     ) {
       // call the api
 
+
+
       const res = await registerUser(response);
       setshowModal(true);
-      // history.push("/startDetails");
-      // console.log(res);
+      console.log(res);
     }
   };
 
   return (
-    <>
-      <Header />
-      <h1 className="heading">Sign Up as a Service User</h1>
-      <Container className="Main-content">
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                <img
-                  className="img"
-                  alt="complex"
-                  src="https://images.unsplash.com/photo-1536158614364-49b81421db1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                />
-                <h4 className="welcome">WELCOME!</h4>
-                <p className="text"> Create an Account </p>
-                <h5 className="welcome">
-                  RIGHTBELL
-                  <span className="text">(Every Bells Matter to Us) </span>
-                </h5>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={classes.paper}>
-                {/* <form className={classes.form} noValidate> */}
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      autoComplete="fname"
-                      name="firstName"
-                      variant="outlined"
-                      required
-                      fullWidth
-                      id="firstName"
-                      label="First Name"
-                      className="Text-field"
-                      onChange={(e) => {
-                        // console.log(e.target.value);
-                        setName(e.target.value);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      variant="outlined"
-                      required
-                      fullWidth
-                      id="lastName"
-                      label="Last Name"
-                      name="lastName"
-                      autoComplete="lname"
-                      onChange={(e) => {
-                        // console.log(e.target.value);
-                        setLastName(e.target.value);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      variant="outlined"
-                      required
-                      fullWidth
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
-                      onChange={(e) => {
-                        // console.log(e.target.value);
-                        setEmail(e.target.value);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      variant="outlined"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="current-password"
-                      onChange={(e) => {
-                        // console.log(e.target.value);
-                        setPass(e.target.value);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      variant="outlined"
-                      required
-                      fullWidth
-                      name="Confirm password"
-                      label="Confirm Password"
-                      type="password"
-                      id="Confirm password"
-                      autoComplete="current-password"
-                      onChange={(e) => {
-                        // console.log(e.target.value);
-                        setPass2(e.target.value);
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      variant="outlined"
-                      required
-                      fullWidth
-                      name="Phone Number"
-                      label="Phone Number"
-                      type="Phone Number"
-                      id="Phone Number"
-                      autoComplete="current-Phone Number"
-                      onChange={(e) => {
-                        // console.log(e.target.value);
-                        setPhone(e.target.value);
-                      }}
-                    />
-                  </Grid>
+    <div>
+      <Row className="mb-5">
+        <Header />
+      </Row>
+      <Row className="justify-content-md-center mt-5">
+        <Col className="mb-5" xs={3}>
+          <Row style={{ textAlign: "center" }}>
+            <h2>Sign Up As Service User</h2>
+            <h5 style={{ color: "#aaa9a9" }}>Sign up as a service user with rightbell to get the services</h5>
+          </Row>
+        </Col>
+        <Col xs={12} />
+        <Col xs={3}>
+          <Row>
+            <InputGroup className="mb-3">
+              <Row>
+                <Col>
+                  <FormControl
+                    placeholder="First name"
+                    aria-label="email"
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
+                </Col>
+                <Col>
+                  <FormControl
+                    placeholder="Last name"
+                    aria-label="email"
+                   onChange={e => setLastName(e.target.value)}
+                  />
+                </Col>
+              </Row>
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Email"
+                aria-label="email"
+                onChange={e => setEmail(e.target.value)}
+                aria-label="password"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Phone number"
+                aria-label="phone_number"
+                type="number"
+                onChange={e => setPhone(e.target.value)}
+                aria-label="password"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Password"
+                aria-label="password"
+                type="password"
+                onChange={e => setPass(e.target.value)}
+                aria-label="password"
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Confirm password"
+                aria-label="phone_number"
+                type="password"
+                onChange={e => setPass2(e.target.value)}
+                aria-label="password"
+              />
+            </InputGroup>
+          </Row>
+        </Col>
+        <Col xs={12} />
+        <Col xs={3}>
+          <Row>
+            <Col>
+              <p onClick={() => props.history.push('/Login')} style={{ color: '#0B5ED7', cursor: "pointer" }}>Already have an account ? Login</p>
+            </Col>
+            <Col>
+              <Button onClick={handleSubmit} style={{ width: '100%' }} variant="primary">Sign Up</Button>
+            </Col>
 
-                  <Grid item xs={12}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox value="allowExtraEmails" color="primary" />
-                      }
-                      label="I want to receive all updates via email."
-                    />
-                  </Grid>
-                </Grid>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    paddingTop: "10px",
-                    background: "#07222E",
-                    paddingBottom: "11px",
-                    fontSize: "1.1rem",
-                  }}
-                  onClick={handleSubmit}
-
-                  // className={classes.submit}
-                >
-                  SIGN UP
-                </Button>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <Link href="/Login" variant="body2">
-                      Already have an account? Sign in
-                    </Link>
-                  </Grid>
-                </Grid>
-                {/* </form> */}
-              </Paper>
-            </Grid>
-          </Grid>
-          <RrightBellModal openModel={showModal} setOpenModel={setshowModal} />
-        </div>
-      </Container>
-      <Footer />
-    </>
-  );
+          </Row>
+        </Col>
+        <Col xs={12} />
+      </Row>
+      <Row>
+        <Footer />
+      </Row>
+    </div>
+  )
 }

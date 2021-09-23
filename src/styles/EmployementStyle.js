@@ -5,6 +5,5 @@ export const EmployementStyle = {
     paddingBottom: "10px",
     fontSize: "1rem",
     background: "#07222E",
-
   },
 };

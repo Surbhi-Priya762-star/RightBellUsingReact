@@ -14,6 +14,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { useHistory } from "react-router-dom";
 import { manageUserInfo } from "../../api";
+import { EmployementApi } from "../../api";
 import { stepperNextContext } from "../../utils/stepperNextContext";
 
 function Education({ userInfo }) {
@@ -29,7 +30,7 @@ function Education({ userInfo }) {
     {
       schoolName: "",
       yearOfComplition: "",
-      recentEducation: true,
+      recentEducation: false,
       degree: "",
       specialization: "",
       university: "",
@@ -79,7 +80,11 @@ function Education({ userInfo }) {
     e.preventDefault();
     setCurrentPage((previousData) => previousData + 1);
     handleNext();
-    console.log(addEducationCount);
+
+    const res = await EmployementApi(addEducationCount);
+    if (res) {
+      console.log("success");
+    }
     // if (present == '') {
     //   alert('Please select prese type!!!');
     //   return;
@@ -172,14 +177,15 @@ function Education({ userInfo }) {
                 <Checkbox
                   name="recentEducation"
                   checked={addEducationCount[index].recentEducation}
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    console.log(e.target.checked);
                     handleChangeFunc(
                       "recentEducation",
-                      e.target.value,
+                      e.target.checked,
                       index,
                       addEducationCount
-                    )
-                  }
+                    );
+                  }}
                   value="allowExtraEmails"
                   color="primary"
                 />
