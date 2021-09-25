@@ -84,7 +84,7 @@ function getStyles(name, personName, theme) {
 
 
 function Assessment(props) {
-  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('friday-user-info')));
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('user-info')));
 
   const classes = useStyles();
 

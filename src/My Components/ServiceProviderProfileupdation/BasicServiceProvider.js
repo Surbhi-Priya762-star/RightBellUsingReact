@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Basic() {
-  const userInfo = JSON.parse(localStorage.getItem('friday-user-info'));
+  const userInfo = JSON.parse(localStorage.getItem('user-info'));
   const [emailModal, setEmailModal] = useState(false);
   const classes = useStyles();
   const history = useHistory();

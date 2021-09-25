@@ -1,12 +1,14 @@
+/* eslint-disable no-lone-blocks */
 import React, { useState, useEffect } from "react";
 
 import Paper from "@material-ui/core/Paper";
+import { RootContainer } from "../../styles/RootContainer";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { TextField } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import { EmployementStyle } from "../../styles/EmployementStyle";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Radio from "@material-ui/core/Radio";
@@ -40,17 +42,27 @@ const useStyles = makeStyles((theme) => ({
 function Education({ userInfo }) {
   const [addEducationCount, setAddEducationCount] = useState([
     {
-      schoolName: "",
-      yearOfComplition: "",
-      recentEducation: false,
-      degree: "",
-      specialization: "",
-      university: "",
-      percentage: "",
-      courseType: "",
+      schoolName: "gyaan jyoti college",
+      yearOfComplition: "2003-09-20",
+      recentEducation: true,
+      degree: "B.Tech",
+      specialization: "web dev",
+      university: "IIT",
+      percentage: 98,
+      courseType: "fullTime",
+    },
+    {
+      schoolName: "Doaba College",
+      yearOfComplition: "2003-09-25",
+      recentEducation: true,
+      degree: "B.Tech",
+      specialization: "Mobile dev",
+      university: "IIT",
+      percentage: 55,
+      courseType: "partTime",
     },
   ]);
-  const [btnDisable, setBtnDisable] = useState(false)
+  const [btnDisable, setBtnDisable] = useState(false);
   const [localUserInfo, setlocalUserInfo] = useState(userInfo);
   const classes = useStyles();
   const history = useHistory();
@@ -88,8 +100,8 @@ function Education({ userInfo }) {
           courseType: "",
         },
       ]);
-    }else{
-      setBtnDisable(true)
+    } else {
+      setBtnDisable(true);
     }
   };
 
@@ -106,47 +118,36 @@ function Education({ userInfo }) {
     //   return;
     // }
 
-    const education = [
-      {
-        college: e.target.college.value,
-        yoc: e.target.yoc.value,
-        degree: e.target.degree.value,
-        specialization: e.target.specialization.value,
-        board: e.target.board.value,
-        marks: e.target.marks.value,
-        present: present,
-        courseType: value,
-      },
-    ];
-
     // console.log(education);
-    const data = await manageUserInfo(localUserInfo.id, {
-      education: education,
-    });
-    if (data.id) {
-      setlocalUserInfo(data);
-      setEdit(false);
-    }
+    // const data = await manageUserInfo(localUserInfo.id, {
+    //   education: education,
+    // });
+    // if (data.id) {
+    //   setlocalUserInfo(data);
+    //   setEdit(false);
+    // }
+  };
+
+  const handleChangeFunc = (key, value, index, state) => {
+    const obj = { ...state[index] };
+    obj[key] = value;
+    const arr = [...state];
+    arr[index] = obj;
+    setAddEducationCount(arr);
   };
 
   return (
-    <div
-      style={{
-        boxShadow:
-          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
-        width: "60%",
-        height: "auto",
-        margin: "auto",
-        marginTop: "160px",
-        padding: "45px",
-        borderRadius: "6px",
-      }}
+    <form
+    style={{
+      ...RootContainer.rootContainer,
+      height: "auto",
+    }}
     >
       <div style={{ marginBottom: "30px" }}>
         <h2>Educations Details</h2>
       </div>
 
-      {addEducationCount.map((d) => (
+      {addEducationCount.map((d, index) => (
         <>
           <div
             style={{
@@ -160,14 +161,39 @@ function Education({ userInfo }) {
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="School/College"
-              // value={userInfo.phone}
+              name="schoolName"
+              value={addEducationCount[index].schoolName}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "schoolName",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
+              }
               aria-describedby="component-helper-text"
             />
             <TextField
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="Year of Compelition"
-              // value={userInfo.phone}
+              type="date"
+              name="yearOfComplition"
+              value={addEducationCount[index].yearOfComplition}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "yearOfComplition",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
+              }
               aria-describedby="component-helper-text"
             />
           </div>
@@ -175,8 +201,19 @@ function Education({ userInfo }) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={defaultEducation.present}
-                  onChange={(e) => setPresent(!present)}
+                  name="recentEducation"
+                  checked={addEducationCount[index].recentEducation}
+                  onChange={
+                    edit
+                      ? (e) =>
+                          handleChangeFunc(
+                            "recentEducation",
+                            e.target.value,
+                            index,
+                            addEducationCount
+                          )
+                      : null
+                  }
                   value="allowExtraEmails"
                   color="primary"
                 />
@@ -197,14 +234,38 @@ function Education({ userInfo }) {
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="Degree/Highest Qualification"
-              // value={userInfo.phone}
+              name="degree"
+              value={addEducationCount[index].degree}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "degree",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
+              }
               aria-describedby="component-helper-text"
             />
             <TextField
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="Specialization"
-              // value={userInfo.phone}
+              name="specialization"
+              value={addEducationCount[index].specialization}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "specialization",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
+              }
               aria-describedby="component-helper-text"
             />
           </div>
@@ -220,14 +281,39 @@ function Education({ userInfo }) {
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="University/Board"
-              // value={userInfo.phone}
+              name="university"
+              value={addEducationCount[index].university}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "university",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
+              }
               aria-describedby="component-helper-text"
             />
             <TextField
               style={{ width: "45%", fontSize: "1rem" }}
               id="component-helper"
               label="CGPA/Percentage"
-              // value={userInfo.phone}
+              type="number"
+              name="percentage"
+              value={addEducationCount[index].percentage}
+              onChange={
+                edit
+                  ? (e) =>
+                      handleChangeFunc(
+                        "percentage",
+                        e.target.value,
+                        index,
+                        addEducationCount
+                      )
+                  : null
+              }
               aria-describedby="component-helper-text"
             />
           </div>
@@ -241,9 +327,19 @@ function Education({ userInfo }) {
               <RadioGroup
                 id="courseType"
                 aria-label="Course Type"
-                name="Course Type1"
-                // value={value}
-                // onChange={handleChange}
+                name="courseType"
+                value={addEducationCount[index].courseType}
+                onChange={
+                  edit
+                    ? (e) =>
+                        handleChangeFunc(
+                          "courseType",
+                          e.target.value,
+                          index,
+                          addEducationCount
+                        )
+                    : null
+                }
               >
                 <FormControlLabel
                   value="fullTime"
@@ -287,13 +383,7 @@ function Education({ userInfo }) {
         }}
       >
         <Button
-          style={{
-            width: "150px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            fontSize: "1rem",
-            background: "#576574",
-          }}
+          style={{ ...EmployementStyle.btnStyle }}
           type="submit"
           fullWidth
           variant="contained"
@@ -302,23 +392,19 @@ function Education({ userInfo }) {
           Save
         </Button>
         <Button
-          style={{
-            width: "150px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            fontSize: "1rem",
-            background: "#576574",
+          style={{ ...EmployementStyle.btnStyle }}
+          onClick={() => {
+            setEdit((previousData) => !previousData);
           }}
-          type="submit"
           fullWidth
           variant="contained"
           color="primary"
         >
-          Edit
-          <i class="fas fa-pen"></i>
+          {edit ? "Cancel" : "Edit"}
+          {!edit ? <i class="fas fa-pen"></i> : null}
         </Button>
       </div>
-    </div>
+    </form>
   );
 }
 
