@@ -31,7 +31,28 @@ export const registerUser = async (data = {}) => {
   }
 };
 
-export const EmployementApi = async (data = {}) => {
+export const EducationApi = async (data = {}) => {
+  try {
+    let config = {
+      method: "get",
+      url: "/v2/education",
+      data,
+    };
+    const res = await apiClient(config, "Education");
+    // const { tokens, user } = res.data;
+    // loginHelper(tokens, user);
+    console.log("apoi 's res ====> ", res)
+    return res;
+  } catch (error) {
+    if (!axios.isCancel(error)) {
+      console.log(error.message);
+      alert(error.message);
+      return false;
+    }
+  }
+};
+
+export const getEducation = async (data = {}) => {
   try {
     let config = {
       method: "post",
@@ -62,6 +83,7 @@ export const login = async (data = {}) => {
     const res = await apiClient(config, "LOGIN");
     const { tokens, user } = res.data;
     loginHelper(tokens, user);
+    console.log("user => ",user)
     return user;
   } catch (error) {
     if (!axios.isCancel(error)) {

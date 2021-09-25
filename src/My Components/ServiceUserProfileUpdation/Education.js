@@ -17,7 +17,7 @@ import FormControl from "@material-ui/core/FormControl";
 import EditIcon from "@material-ui/icons/Edit";
 import FormLabel from "@material-ui/core/FormLabel";
 import { useHistory } from "react-router-dom";
-import { manageUserInfo } from "../../api";
+import { getEducation } from "../../api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,6 +105,15 @@ function Education({ userInfo }) {
     }
   };
 
+  const fetchEducation = async () => {
+    const res = await getEducation();
+    console.log("hiiiiiiiiiii ", JSON.parse(localStorage.getItem("user-info")));
+  };
+
+  useEffect(() => {
+    fetchEducation();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(value);
@@ -113,19 +122,6 @@ function Education({ userInfo }) {
       return;
     }
     console.log(present);
-    // if (present == '') {
-    //   alert('Please select prese type!!!');
-    //   return;
-    // }
-
-    // console.log(education);
-    // const data = await manageUserInfo(localUserInfo.id, {
-    //   education: education,
-    // });
-    // if (data.id) {
-    //   setlocalUserInfo(data);
-    //   setEdit(false);
-    // }
   };
 
   const handleChangeFunc = (key, value, index, state) => {
@@ -138,10 +134,10 @@ function Education({ userInfo }) {
 
   return (
     <form
-    style={{
-      ...RootContainer.rootContainer,
-      height: "auto",
-    }}
+      style={{
+        ...RootContainer.rootContainer,
+        height: "auto",
+      }}
     >
       <div style={{ marginBottom: "30px" }}>
         <h2>Educations Details</h2>

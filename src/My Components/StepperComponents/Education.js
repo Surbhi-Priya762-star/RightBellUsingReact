@@ -14,7 +14,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { useHistory } from "react-router-dom";
 import { manageUserInfo } from "../../api";
-import { EmployementApi } from "../../api";
+import { EducationApi } from "../../api";
 import { stepperNextContext } from "../../utils/stepperNextContext";
 
 function Education({ userInfo }) {
@@ -81,9 +81,9 @@ function Education({ userInfo }) {
     setCurrentPage((previousData) => previousData + 1);
     handleNext();
 
-    const res = await EmployementApi(addEducationCount);
+    const res = await EducationApi(addEducationCount);
     if (res) {
-      console.log("success");
+      console.log("success", res);
     }
     // if (present == '') {
     //   alert('Please select prese type!!!');
